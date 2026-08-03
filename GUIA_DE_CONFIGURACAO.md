@@ -1,5 +1,16 @@
 # MaioRH — ativação dos novos recursos
 
+## Configuração inicial (projeto novo)
+
+Diferente do site irmão (América), este projeto **ainda não tem nenhuma tabela criada no Supabase**. Antes de qualquer outra coisa:
+
+1. Crie um projeto novo em [supabase.com](https://supabase.com).
+2. Copie a "Project URL" e a chave "anon public" em `Project Settings > API`.
+3. Abra o **SQL Editor** e rode o arquivo `SETUP_INICIAL_SUPABASE.sql` inteiro (uma única vez — ele cria todas as tabelas, o bucket de currículos, as políticas de segurança e a função de cadastro).
+4. Em `Authentication > Users`, crie manualmente o usuário que a equipe vai usar para entrar no Painel RH.
+
+Os demais arquivos `.sql` desta pasta (`ATIVAR_MODULO_VAGAS.sql`, `CORRECAO_*.sql`, `DIAGNOSTICO_*.sql`, `supabase_setup.sql`) vieram do histórico do projeto irmão e **não precisam ser rodados aqui** — o `SETUP_INICIAL_SUPABASE.sql` já cobre tudo que eles fazem.
+
 O site e o painel continuam funcionando com as tabelas atuais. Os módulos novos usam uma expansão opcional do Supabase.
 
 ## O que já funciona sem configuração adicional
