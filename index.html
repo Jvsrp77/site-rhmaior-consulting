@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Soluções estratégicas em recrutamento, seleção, hunting executivo e mão de obra temporária.">
+  <meta name="theme-color" content="#12071f">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://www.googletagmanager.com; connect-src 'self' https://*.supabase.co wss://*.supabase.co https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https:; base-uri 'self'; form-action 'self'">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:title" content="MaioRH | Recrutamento de alta performance">
+  <meta property="og:description" content="Estratégia em pessoas para negócios que querem crescer.">
+  <meta property="og:image" content="og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="og-image.png">
+  <title>MaioRH | Recrutamento de alta performance</title>
+  <link rel="canonical" href="index.html">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="favicon-16.png" sizes="16x16" type="image/png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="manifest" href="site.webmanifest">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.111.0" defer></script>
+  <script src="config.js" defer></script>
+  <script src="candidate-service.js" defer></script>
+  <script src="site.js" defer></script>
+</head>
+<body>
+  <div class="scroll-progress" aria-hidden="true"><i></i></div>
+  <div class="page-noise" aria-hidden="true"></div>
+  <a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
+  <header class="site-header" id="inicio">
+    <div class="header-inner">
+      <a class="brand" href="#inicio" aria-label="MaioRH — início">
+        <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span><strong>Maio</strong><small>RH</small></span>
+      </a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-principal"><span></span><span></span><span></span><b class="sr-only">Abrir menu</b></button>
+      <nav id="nav-principal" class="main-nav" aria-label="Navegação principal">
+        <a href="#solucoes">Soluções</a>
+        <a href="#metodo">Como atuamos</a>
+        <a href="#sobre">Sobre</a>
+        <a href="vagas.html">Vagas</a>
+        <a class="portal-link" href="painel_rh.html" rel="nofollow"><span aria-hidden="true"></span> Portal RH</a>
+        <button class="button button-dark button-sm" type="button" data-open="empresa">Fale com um especialista <span aria-hidden="true">↗</span></button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="conteudo">
+    <section class="hero">
+      <div class="hero-grid" aria-hidden="true"></div>
+      <div class="hero-orbit orbit-one" aria-hidden="true"></div>
+      <div class="hero-orbit orbit-two" aria-hidden="true"></div>
+      <div class="hero-glow hero-glow-one" aria-hidden="true"></div><div class="hero-glow hero-glow-two" aria-hidden="true"></div>
+      <div class="container hero-layout hero-layout-next">
+        <div class="hero-copy reveal">
+          <div class="hero-mode-pill"><span></span> Human intelligence × dados estratégicos</div>
+          <h1>Talento certo.<br><em>Impacto real.</em></h1>
+          <p>Transformamos desafios de pessoas em vantagem competitiva — conectando estratégia, tecnologia e uma curadoria genuinamente humana.</p>
+          <div class="hero-actions">
+            <button class="button button-primary hero-primary" type="button" data-open="empresa">Encontre o talento ideal <span aria-hidden="true">↗</span></button>
+            <button class="button button-ghost" type="button" data-open="candidato">Quero fazer parte <span aria-hidden="true">→</span></button>
+          </div>
+          <div class="hero-proof hero-proof-next">
+            <div><strong data-count-to="100" data-suffix="%">0%</strong><span>foco em recrutamento e RH</span></div>
+            <div><strong data-count-to="360" data-suffix="°">0°</strong><span>leitura do negócio</span></div>
+            <div><strong id="hero-job-count">Ativo</strong><span>banco de oportunidades</span></div>
+          </div>
+        </div>
+        <div class="hero-visual talent-intelligence reveal" aria-label="Radar visual de inteligência de talentos">
+          <div class="intelligence-shell">
+            <div class="intelligence-head"><span>Talent intelligence</span><span class="live-label"><i></i> Sistema ativo</span></div>
+            <div class="radar-stage" aria-hidden="true">
+              <div class="radar-ring radar-ring-one"></div><div class="radar-ring radar-ring-two"></div><div class="radar-ring radar-ring-three"></div>
+              <div class="radar-scan"></div>
+              <span class="talent-node node-one" title="Recrutamento & Seleção">R&amp;S</span><span class="talent-node node-two" title="Executive Search">ES</span><span class="talent-node node-three" title="Operações & Logística">OP</span><span class="talent-node node-four" title="Lideranças">LID</span>
+              <div class="radar-core"><span class="brand-mark"><i></i><i></i><i></i></span><small>Match humano</small></div>
+            </div>
+            <div class="intelligence-stats"><article><span>01</span><strong>Contexto</strong><small>Entender antes de buscar</small></article><article><span>02</span><strong>Precisão</strong><small>Evidências para decidir</small></article><article><span>03</span><strong>Conexão</strong><small>Pessoas além do papel</small></article></div>
+          </div>
+          <div class="intel-float intel-float-top"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3" fill="currentColor" stroke="none"/></svg></i><span><small>Curadoria especialista</small><strong>Humano no centro</strong></span></div>
+          <div class="intel-float intel-float-bottom"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M9 7h8v8"/></svg></i><span><small>Visão estratégica</small><strong>Talento que evolui</strong></span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="momentum-strip" aria-label="Especialidades da MaioRH"><div class="momentum-track"><div><span>Recrutamento estratégico</span><i>✦</i><span>Executive search</span><i>✦</i><span>Talentos especializados</span><i>✦</i><span>Operações & logística</span><i>✦</i><span>Lideranças</span><i>✦</i></div><div aria-hidden="true"><span>Recrutamento estratégico</span><i>✦</i><span>Executive search</span><i>✦</i><span>Talentos especializados</span><i>✦</i><span>Operações & logística</span><i>✦</i><span>Lideranças</span><i>✦</i></div></div></section>
+
+    <section class="signal-section">
+      <div class="container signal-grid">
+        <article class="signal-statement reveal">
+          <span class="signal-index">AMÉRICA / 2026</span>
+          <h2>Gente não é apenas recurso.<br><em>É vantagem competitiva.</em></h2>
+          <p>Cada contratação é uma decisão de negócio. Por isso, traduzimos estratégia em critérios claros e encontramos quem pode realmente gerar impacto.</p>
+        </article>
+        <div class="signal-bento">
+          <article class="signal-card signal-card-dark reveal"><span>01</span><strong>Visão<br>de negócio</strong><p>O perfil nasce do desafio, não de uma descrição genérica.</p><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M9 7h8v8"/></svg></i></article>
+          <article class="signal-card signal-card-orange reveal"><span>02</span><strong>Curadoria<br>especialista</strong><p>Tecnologia acelera. Experiência humana decide.</p><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3" fill="currentColor" stroke="none"/></svg></i></article>
+          <article class="signal-card signal-card-wide reveal"><div><span>03</span><strong>Processos que geram confiança</strong></div><p>Clareza para empresas. Respeito para candidatos.</p><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13"/><path d="M13 6l6 6-6 6"/></svg></i></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="solucoes">
+      <div class="container">
+        <div class="section-heading reveal"><div><span class="eyebrow">Soluções corporativas</span><h2>Recrutamento pensado para o seu próximo passo.</h2></div><p>Da necessidade pontual à construção de times estratégicos, desenhamos cada processo com profundidade, agilidade e transparência.</p></div>
+        <div class="service-grid">
+          <article class="service-card service-featured reveal"><span class="service-number">01</span><div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2.2"/><path d="M8 8h8"/><path d="M8 12h5"/><path d="M8 16.2l2 2 4-4.4"/></svg></div><h3>Recrutamento & Seleção</h3><p>Mapeamento completo do perfil, triagem qualificada e avaliação técnica e comportamental.</p><button type="button" data-open="empresa" data-service="Recrutamento e Seleção">Conhecer solução <span>→</span></button></article>
+          <article class="service-card reveal"><span class="service-number">02</span><div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="6.2"/><path d="M14.7 14.7L20 20"/><path d="M10 6.6l.9 2.5 2.5.9-2.5.9-.9 2.5-.9-2.5-2.5-.9 2.5-.9z" fill="currentColor" stroke="none"/></svg></div><h3>Executive Search</h3><p>Busca ativa e confidencial para posições críticas, especialistas e lideranças.</p><button type="button" data-open="empresa" data-service="Executive Search / Hunting">Conhecer solução <span>→</span></button></article>
+          <article class="service-card reveal"><span class="service-number">03</span><div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="10" width="8" height="8" rx="2"/><rect x="8.5" y="6" width="8" height="8" rx="2"/><rect x="14" y="10" width="8" height="8" rx="2"/></svg></div><h3>Temporários</h3><p>Flexibilidade operacional com contratação ágil e profissionais preparados para a demanda.</p><button type="button" data-open="empresa" data-service="Mão de Obra Temporária">Conhecer solução <span>→</span></button></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section opportunity-insights" id="oportunidades-em-dados">
+      <div class="container">
+        <div class="insights-heading reveal"><div><span class="eyebrow eyebrow-dark"><i></i> Oportunidades em dados</span><h2>Uma visão viva do nosso mercado de talentos.</h2></div><p>Dados atualizados diretamente das vagas publicadas pela equipe MaioRH.</p></div>
+        <div class="opportunity-dashboard reveal" id="opportunity-dashboard" aria-live="polite">
+          <article class="data-card data-total"><span class="data-label">Vagas ativas</span><strong id="dashboard-total">—</strong><p>Oportunidades disponíveis neste momento.</p><a href="vagas.html">Explorar todas <span>↗</span></a></article>
+          <article class="data-card data-areas"><div class="data-card-head"><div><span class="data-label">Distribuição</span><h3>Vagas por área</h3></div><span class="data-live"><i></i> Ao vivo</span></div><div class="area-bars" id="area-bars"><div class="skeleton-bars"><i></i><i></i><i></i></div></div></article>
+          <article class="data-card data-modes"><div class="data-card-head"><div><span class="data-label">Modelo de trabalho</span><h3>Modalidades</h3></div></div><div class="donut-layout"><div class="mode-donut" id="mode-donut"><strong>—</strong><span>vagas</span></div><div class="mode-legend" id="mode-legend"><div class="skeleton-rows skeleton-rows-sm"><i></i><i></i><i></i></div></div></div></article>
+          <article class="data-card data-locations"><div class="data-card-head"><div><span class="data-label">Presença</span><h3>Localidades em destaque</h3></div></div><div class="location-ranking" id="location-ranking"><div class="skeleton-rows"><i></i><i></i><i></i></div></div><small id="dashboard-status">Atualização automática pelo painel RH.</small></article>
+        </div>
+        <div class="featured-jobs" id="featured-jobs" hidden>
+          <div class="featured-jobs-head"><h3>Vagas em destaque</h3><a class="text-link" href="vagas.html">Ver todas as vagas <span>→</span></a></div>
+          <div class="featured-jobs-grid" id="featured-jobs-grid"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section fit-lab" id="mapa-de-aderencia">
+      <div class="container fit-lab-layout">
+        <div class="fit-lab-copy reveal">
+          <span class="eyebrow">MaioRH Intelligence Lab</span>
+          <h2>Uma contratação forte nasce do equilíbrio certo.</h2>
+          <p>O perfil ideal muda conforme o desafio. Nosso mapa transforma contexto em critérios claros para orientar uma avaliação mais completa.</p>
+          <div class="profile-switcher" role="group" aria-label="Escolha um contexto de contratação">
+            <button class="active" type="button" data-fit-profile="lideranca" aria-pressed="true">Liderança</button>
+            <button type="button" data-fit-profile="especialista" aria-pressed="false">Especialista</button>
+            <button type="button" data-fit-profile="operacoes" aria-pressed="false">Operações</button>
+          </div>
+          <p class="fit-disclaimer"><i></i> Visualização demonstrativa do método. Os critérios reais são definidos para cada projeto.</p>
+        </div>
+        <div class="fit-console reveal">
+          <div class="fit-console-head"><div><span>Mapa de aderência</span><strong id="fit-profile-title">Perfil de liderança</strong></div><span class="fit-console-status"><i></i> Modelo ativo</span></div>
+          <div class="fit-chart-wrap"><canvas id="fit-chart" role="img" aria-label="Gráfico demonstrativo dos critérios de avaliação para perfil de liderança"></canvas><div class="fit-chart-core"><span>AM</span><small>Fit map</small></div></div>
+          <div class="fit-legend" id="fit-legend" aria-label="Critérios considerados"></div>
+          <div class="fit-console-foot"><span>Contexto antes do currículo</span><span id="fit-profile-caption">Equilíbrio entre visão, influência e capacidade de execução.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section process-section" id="metodo">
+      <div class="container process-layout">
+        <div class="process-intro reveal"><span class="eyebrow eyebrow-dark"><i></i> Nosso método</span><h2>Precisão nos dados.<br><em>Excelência nas relações.</em></h2><p>Um processo claro do briefing à integração, com consultoria próxima em cada decisão.</p><button class="button button-light" type="button" data-open="empresa">Conversar com especialista <span>→</span></button></div>
+        <ol class="process-list">
+          <li class="reveal"><b>01</b><div><h3>Imersão no negócio</h3><p>Entendemos o desafio, a cultura e o impacto esperado para definir o perfil ideal.</p></div></li>
+          <li class="reveal"><b>02</b><div><h3>Mapeamento inteligente</h3><p>Combinamos busca ativa, dados de mercado e uma rede qualificada de talentos.</p></div></li>
+          <li class="reveal"><b>03</b><div><h3>Avaliação completa</h3><p>Analisamos competências, trajetória, motivadores e aderência cultural.</p></div></li>
+          <li class="reveal"><b>04</b><div><h3>Decisão acompanhada</h3><p>Apresentamos evidências e apoiamos a escolha até a integração do profissional.</p></div></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section vacancy-cost" id="custo-da-vaga">
+      <div class="container vacancy-cost-layout">
+        <div class="cost-copy reveal">
+          <span class="eyebrow">Decisão com visão de negócio</span>
+          <h2>Uma posição em aberto também tem impacto financeiro.</h2>
+          <p>Simule a exposição operacional associada ao tempo de vacância e visualize por que velocidade com qualidade importa.</p>
+          <div class="cost-formula"><span>Modelo utilizado</span><code>(salário ÷ 30) × dias × criticidade</code></div>
+          <p class="cost-disclaimer">Estimativa educativa para apoiar conversas de planejamento. Não representa perda contábil, garantia de economia ou diagnóstico financeiro.</p>
+        </div>
+        <div class="cost-calculator reveal">
+          <div class="cost-controls">
+            <label>Salário mensal da posição <span>R$</span><input id="cost-salary" type="number" min="1500" max="100000" step="500" value="6000" inputmode="decimal"></label>
+            <label>Tempo estimado em aberto <output id="cost-days-output" for="cost-days">45 dias</output><input id="cost-days" type="range" min="15" max="120" step="15" value="45"></label>
+            <label>Nível de criticidade <select id="cost-factor"><option value="1">Operacional · 1,00×</option><option value="1.35" selected>Crítica · 1,35×</option><option value="1.7">Estratégica · 1,70×</option></select></label>
+          </div>
+          <div class="cost-result"><div><span>Exposição operacional estimada</span><strong id="cost-result-value">R$ 0</strong><small id="cost-result-caption">para 45 dias de posição em aberto</small></div><i aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M9 7h8v8"/></svg></i></div>
+          <div class="cost-chart" aria-label="Evolução estimada por tempo de vacância">
+            <div class="cost-chart-head"><span>Impacto ao longo do tempo</span><span>Estimativa acumulada</span></div>
+            <div class="cost-bars" id="cost-bars"></div>
+          </div>
+          <button class="button button-dark cost-cta" type="button" data-open="empresa" data-service="Recrutamento e Seleção">Planejar uma contratação <span>→</span></button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section about-section" id="sobre">
+      <div class="container about-grid">
+        <div class="about-copy reveal"><span class="eyebrow">Sobre a MaioRH</span><h2>Experiência em pessoas.<br>Visão de futuro.</h2><p>Apoiamos empresas na construção de equipes mais fortes e profissionais em decisões de carreira mais conscientes.</p><p>Nossa atuação combina escuta, inteligência de mercado, avaliação criteriosa e acompanhamento próximo — sempre com ética, confidencialidade e respeito.</p><a class="text-link" href="#contato">Conheça nossa forma de trabalhar <span>→</span></a></div>
+        <div class="about-values reveal"><article><span>01</span><div><h3>Profundidade</h3><p>Investigamos o contexto antes de indicar caminhos.</p></div></article><article><span>02</span><div><h3>Transparência</h3><p>Comunicação clara para empresas e candidatos.</p></div></article><article><span>03</span><div><h3>Responsabilidade</h3><p>Dados e decisões tratados com cuidado e confidencialidade.</p></div></article><article><span>04</span><div><h3>Proximidade</h3><p>Consultoria humana em todas as etapas do processo.</p></div></article></div>
+      </div>
+    </section>
+
+    <section class="section proof-section" id="resultados">
+      <div class="container">
+        <div class="section-heading reveal"><div><span class="eyebrow">Experiência aplicada</span><h2>Impacto que pode ser visto no negócio.</h2></div><p>Apresentamos nossa atuação por contexto e solução, sem expor dados confidenciais de clientes ou candidatos.</p></div>
+        <div class="case-grid">
+          <article class="case-card reveal"><span class="case-tag">Operações & Logística</span><h3>Estruturação de equipes para picos de demanda</h3><p>Planejamento de perfil, triagem e mobilização para operações com necessidade de velocidade e consistência.</p><div><span>Foco</span><strong>Agilidade com controle</strong></div></article>
+          <article class="case-card reveal"><span class="case-tag">Posições estratégicas</span><h3>Busca confidencial de especialistas e lideranças</h3><p>Mapeamento de mercado e abordagem consultiva para posições críticas que exigem discrição e aderência cultural.</p><div><span>Foco</span><strong>Precisão na decisão</strong></div></article>
+          <article class="case-card reveal"><span class="case-tag">Administrativo & Comercial</span><h3>Seleção orientada ao contexto do negócio</h3><p>Avaliação de competências e motivadores para conectar profissionais aos objetivos de cada empresa.</p><div><span>Foco</span><strong>Performance sustentável</strong></div></article>
+        </div>
+        <div class="credibility-note reveal"><span>◎</span><p><strong>Transparência acima de números decorativos.</strong> Marcas, indicadores e depoimentos nominais serão publicados somente com dados reais e autorização.</p></div>
+      </div>
+    </section>
+
+    <section class="section" id="insights">
+      <div class="container">
+        <div class="section-heading reveal"><div><span class="eyebrow">Inteligência para pessoas</span><h2>Ideias que transformam o trabalho.</h2></div><p>Pesquisas que ajudam empresas e profissionais a tomar decisões melhores.</p></div>
+        <div class="insight-grid">
+          <button class="insight-card insight-main reveal" type="button" data-article="modalArtigo1"><span class="insight-source">Cambridge University</span><span class="insight-category">Tecnologia & IA</span><h3>Inteligência Artificial: o computador diz sim — mas ele está certo?</h3><p>Como sistemas de IA avaliam candidatos e por que a supervisão humana continua indispensável.</p><span class="read-more">Ler análise <b>↗</b></span></button>
+          <button class="insight-card reveal" type="button" data-article="modalArtigo2"><span class="insight-source">Harvard Business Review</span><span class="insight-category">Soft skills</span><h3>Competências humanas importam mais do que nunca</h3><p>O que milhões de transições de carreira revelam sobre longevidade profissional.</p><span class="read-more">Ler análise <b>↗</b></span></button>
+          <button class="insight-card reveal" type="button" data-article="modalArtigo3"><span class="insight-source">FGV</span><span class="insight-category">Futuro do trabalho</span><h3>O mercado do futuro e as novas tecnologias</h3><p>Como adaptação e aprendizagem contínua influenciam a empregabilidade.</p><span class="read-more">Ler análise <b>↗</b></span></button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section candidate-journey" id="jornada-candidato">
+      <div class="container">
+        <div class="journey-heading reveal"><div><span class="eyebrow">Jornada do candidato</span><h2>Você envia. Nós analisamos com atenção.</h2></div><p>Um caminho transparente para conectar seu perfil às oportunidades certas, com respeito aos seus dados e à sua trajetória.</p></div>
+        <ol class="journey-grid">
+          <li class="journey-card reveal"><span>01</span><i aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 12.5l4 4 8-9"/></svg></i><h3>Cadastro seguro</h3><p>Seu currículo entra em nossa base de talentos com a área de interesse selecionada.</p></li>
+          <li class="journey-card reveal"><span>02</span><i aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3" fill="currentColor" stroke="none"/></svg></i><h3>Análise de perfil</h3><p>A equipe avalia experiência, competências e aderência às oportunidades disponíveis.</p></li>
+          <li class="journey-card reveal"><span>03</span><i aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M9 7h8v8"/></svg></i><h3>Conexão com vagas</h3><p>Quando houver compatibilidade, entraremos em contato para apresentar os próximos passos.</p></li>
+          <li class="journey-card reveal"><span>04</span><i aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 5.5A2 2 0 0 1 7 3.5h10A2 2 0 0 1 19 5.5v7A2 2 0 0 1 17 14.5H10.5L6.5 18v-3.5H7A2 2 0 0 1 5 12.5z"/><circle cx="9" cy="9" r=".8" fill="currentColor" stroke="none"/><circle cx="12" cy="9" r=".8" fill="currentColor" stroke="none"/><circle cx="15" cy="9" r=".8" fill="currentColor" stroke="none"/></svg></i><h3>Acompanhamento humano</h3><p>Em processos ativos, você recebe orientação e comunicação ao longo das etapas.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section candidate-banner"><div class="container candidate-banner-inner reveal"><div><span class="eyebrow eyebrow-dark"><i></i> Oportunidades</span><h2>Seu próximo movimento profissional começa aqui.</h2><p>Consulte oportunidades abertas ou faça parte do nosso banco de talentos.</p></div><div><a class="button button-primary" href="vagas.html">Ver vagas abertas <span>→</span></a><button class="button button-ghost" type="button" data-open="candidato">Cadastrar currículo</button></div></div></section>
+
+    <section class="section faq-section" id="faq"><div class="container faq-grid"><div class="reveal"><span class="eyebrow">Perguntas frequentes</span><h2>Informação clara antes de cada decisão.</h2><p>Tire dúvidas sobre nossos processos, prazos e tratamento de dados.</p></div><div class="faq-list reveal"><details><summary>Como funciona o processo de recrutamento?<span>+</span></summary><p>Começamos com uma imersão no contexto da vaga, seguimos para mapeamento e avaliação e acompanhamos a empresa até a decisão final.</p></details><details><summary>Quanto tempo leva uma seleção?<span>+</span></summary><p>O prazo varia conforme complexidade, senioridade e disponibilidade de profissionais. A estimativa é definida após o diagnóstico inicial.</p></details><details><summary>O cadastro no banco de talentos é gratuito?<span>+</span></summary><p>Sim. Candidatos não pagam para cadastrar o currículo ou participar de processos conduzidos pela MaioRH.</p></details><details><summary>Como meus dados são utilizados?<span>+</span></summary><p>Os dados são usados para recrutamento e contato profissional, respeitando as finalidades informadas e as políticas de acesso configuradas.</p></details><details><summary>Posso solicitar a exclusão dos meus dados?<span>+</span></summary><p>Sim. Utilize o canal de contato do site para solicitar correção ou exclusão das informações armazenadas.</p></details></div></div></section>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Como funciona o processo de recrutamento?","acceptedAnswer":{"@type":"Answer","text":"Começamos com uma imersão no contexto da vaga, seguimos para mapeamento e avaliação e acompanhamos a empresa até a decisão final."}},{"@type":"Question","name":"Quanto tempo leva uma seleção?","acceptedAnswer":{"@type":"Answer","text":"O prazo varia conforme complexidade, senioridade e disponibilidade de profissionais. A estimativa é definida após o diagnóstico inicial."}},{"@type":"Question","name":"O cadastro no banco de talentos é gratuito?","acceptedAnswer":{"@type":"Answer","text":"Sim. Candidatos não pagam para cadastrar o currículo ou participar de processos conduzidos pela MaioRH."}},{"@type":"Question","name":"Como meus dados são utilizados?","acceptedAnswer":{"@type":"Answer","text":"Os dados são usados para recrutamento e contato profissional, respeitando as finalidades informadas e as políticas de acesso configuradas."}},{"@type":"Question","name":"Posso solicitar a exclusão dos meus dados?","acceptedAnswer":{"@type":"Answer","text":"Sim. Utilize o canal de contato do site para solicitar correção ou exclusão das informações armazenadas."}}]}</script>
+
+    <section class="cta-section" id="contato"><div class="container cta-inner reveal"><div><span class="eyebrow eyebrow-dark"><i></i> Vamos conversar</span><h2>O próximo talento da sua empresa pode estar mais perto.</h2></div><button class="button button-primary" type="button" data-open="empresa">Iniciar uma conversa <span>→</span></button></div></section>
+  </main>
+
+  <footer class="site-footer"><div class="container footer-grid"><div><a class="brand brand-footer" href="#inicio"><span class="brand-mark"><i></i><i></i><i></i></span><span><strong>Maio</strong><small>RH</small></span></a><p>Estratégia em pessoas para negócios que querem crescer.</p></div><div><strong>Navegue</strong><a href="#solucoes">Soluções</a><a href="#metodo">Como atuamos</a><a href="#sobre">Sobre</a><a href="vagas.html">Vagas abertas</a><a href="#insights">Insights</a><a href="#faq">FAQ</a></div><div><strong>Conecte-se</strong><button type="button" data-open="empresa">Fale com a equipe</button><button type="button" data-open="candidato">Banco de talentos</button><a href="privacidade.html">Privacidade e LGPD</a><a class="footer-portal" href="painel_rh.html" rel="nofollow">Portal RH <span>↗</span></a><a id="footer-linkedin" class="footer-linkedin" href="#" target="_blank" rel="noopener noreferrer" hidden><span class="footer-linkedin-badge">in</span> LinkedIn</a></div></div><div class="container footer-bottom"><span>© 2026 MaioRH</span><span>Plataforma segura e integrada</span></div></footer>
+
+  <div class="cookie-consent" id="cookie-consent" role="dialog" aria-live="polite" aria-label="Consentimento de cookies" hidden>
+    <p>Usamos cookies para medir o desempenho do site com o Google Analytics. Você pode aceitar ou recusar os cookies não essenciais. Veja nossa <a href="privacidade.html">Política de Privacidade</a>.</p>
+    <div><button class="button button-ghost button-sm" type="button" id="cookie-reject">Recusar</button><button class="button button-dark button-sm" type="button" id="cookie-accept">Aceitar</button></div>
+  </div>
+
+  <button class="back-to-top" id="back-to-top" type="button" aria-label="Voltar ao topo" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5"/><path d="M6 11l6-6 6 6"/></svg></button>
+
+  <div class="quick-contact" aria-label="Atalhos de contato"><a id="quick-whatsapp" class="quick-contact-link" href="#" target="_blank" rel="noopener noreferrer" hidden><span>WhatsApp</span><b aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 5.5A2 2 0 0 1 7 3.5h10A2 2 0 0 1 19 5.5v7A2 2 0 0 1 17 14.5H10.5L6.5 18v-3.5H7A2 2 0 0 1 5 12.5z"/><circle cx="9" cy="9" r=".8" fill="currentColor" stroke="none"/><circle cx="12" cy="9" r=".8" fill="currentColor" stroke="none"/><circle cx="15" cy="9" r=".8" fill="currentColor" stroke="none"/></svg></b></a><a id="quick-schedule" class="quick-contact-link" href="#" target="_blank" rel="noopener noreferrer" hidden><span>Agendar conversa</span><b aria-hidden="true">↗</b></a><button class="quick-contact-main" type="button" data-open="empresa"><span>Fale com a MaioRH</span><b aria-hidden="true">+</b></button></div>
+
+  <div class="modal" id="modalCandidato" role="dialog" aria-modal="true" aria-labelledby="cand-title" hidden><div class="modal-backdrop" data-close></div><div class="modal-panel"><button class="modal-close" type="button" data-close aria-label="Fechar">×</button><span class="eyebrow">Banco de talentos</span><h2 id="cand-title">Construa seu próximo passo.</h2><p>Cadastre seus dados e anexe seu currículo em PDF.</p><form id="formCandidato"><div class="form-grid"><label class="full">Nome completo<input type="text" id="candNome" autocomplete="name" maxlength="120" required placeholder="Como podemos chamar você?"></label><label>E-mail<input type="email" id="candEmail" autocomplete="email" maxlength="160" required placeholder="voce@email.com"></label><label>WhatsApp<input type="tel" id="candTelefone" autocomplete="tel" maxlength="20" required placeholder="(11) 99999-9999"></label><label class="full">Área de interesse<select id="candVaga" required><option value="">Selecione uma área</option><option value="Logistica">Logística e Operações</option><option value="Engenharia">Engenharia e Projetos</option><option value="Administrativo">Administrativo e Financeiro</option><option value="Comercial">Comercial e Vendas</option></select></label><label class="file-field full">Currículo em PDF <span>Máximo de 10 MB</span><input type="file" id="candArquivo" accept="application/pdf,.pdf" required></label><label class="consent-field full"><input type="checkbox" id="candConsentimento" required><span>Li a <a href="privacidade.html" target="_blank">Política de Privacidade</a> e autorizo o uso dos meus dados para recrutamento.</span></label></div><div class="form-status" id="candStatus" role="status"></div><button class="button button-dark submit-button" id="btnCandEnviar" type="submit">Enviar currículo <span>→</span></button></form></div></div>
+
+  <div class="modal" id="modalEmpresa" role="dialog" aria-modal="true" aria-labelledby="emp-title" hidden><div class="modal-backdrop" data-close></div><div class="modal-panel"><button class="modal-close" type="button" data-close aria-label="Fechar">×</button><span class="eyebrow">Atendimento consultivo</span><h2 id="emp-title">Conte-nos sobre o seu desafio.</h2><p>Um especialista entrará em contato para entender sua necessidade.</p><form id="formEmpresa"><div class="form-grid"><label>Seu nome<input type="text" id="empContato" autocomplete="name" maxlength="120" required placeholder="Nome do responsável"></label><label>Empresa<input type="text" id="empNome" autocomplete="organization" maxlength="140" required placeholder="Nome da empresa"></label><label>E-mail corporativo<input type="email" id="empEmail" autocomplete="email" maxlength="160" required placeholder="voce@empresa.com.br"></label><label>Telefone / WhatsApp<input type="tel" id="empTelefone" autocomplete="tel" maxlength="20" required placeholder="(11) 4000-0000"></label><label class="full">Solução desejada<select id="empServico" required><option value="Geral">Consultoria estratégica</option><option value="Recrutamento e Seleção">Recrutamento & Seleção</option><option value="Mão de Obra Temporária">Mão de Obra Temporária</option><option value="Executive Search / Hunting">Executive Search</option></select></label><label>Quantidade estimada<input type="number" id="empQuantidade" min="1" max="999" placeholder="Ex: 5 vagas"></label><label>Urgência<select id="empUrgencia"><option value="Planejamento">Em planejamento</option><option value="30 dias">Até 30 dias</option><option value="15 dias">Até 15 dias</option><option value="Imediata">Imediata</option></select></label><label>Localidade<input type="text" id="empLocalidade" maxlength="120" placeholder="Cidade / Estado"></label><label>Modalidade<select id="empModalidade"><option value="Presencial">Presencial</option><option value="Híbrido">Híbrido</option><option value="Remoto">Remoto</option><option value="A definir">A definir</option></select></label><label class="full">Como podemos ajudar?<textarea id="empMensagem" rows="3" maxlength="1000" placeholder="Conte brevemente sobre a necessidade da sua empresa"></textarea></label></div><div class="form-status" id="empStatus" role="status"></div><button class="button button-dark submit-button" id="btnEmpEnviar" type="submit">Solicitar contato <span>→</span></button></form></div></div>
+
+  <div class="modal article-modal" id="modalArtigo1" role="dialog" aria-modal="true" aria-labelledby="art1-title" hidden><div class="modal-backdrop" data-close></div><article class="modal-panel"><button class="modal-close" type="button" data-close aria-label="Fechar">×</button><span class="eyebrow">Cambridge University · Tecnologia & IA</span><h2 id="art1-title">Inteligência Artificial: o computador diz sim — mas ele está certo?</h2><p>Pesquisa conduzida pelo professor Zoubin Ghahramani analisa como o aprendizado de máquina lida com decisões de alta prioridade.</p><h3>Calibração e confiança</h3><p>Sistemas responsáveis precisam indicar seu próprio grau de certeza. Uma máquina com dados insuficientes pode chegar rapidamente a uma conclusão errada; modelos transparentes também apresentam suas margens de erro.</p><blockquote>Na seleção, a tecnologia deve ampliar — nunca substituir — o julgamento humano especializado.</blockquote><a class="source-link" href="https://www.cam.ac.uk/research/news/artificial-intelligence-computer-says-yes-but-is-it-right" target="_blank" rel="noopener noreferrer">Acessar publicação original ↗</a></article></div>
+  <div class="modal article-modal" id="modalArtigo2" role="dialog" aria-modal="true" aria-labelledby="art2-title" hidden><div class="modal-backdrop" data-close></div><article class="modal-panel"><button class="modal-close" type="button" data-close aria-label="Fechar">×</button><span class="eyebrow">Harvard Business Review · Soft skills</span><h2 id="art2-title">Competências humanas importam mais do que nunca</h2><p>Uma análise de mais de 70 milhões de transições de carreira investigou quais competências sustentam contratação, crescimento e longevidade profissional.</p><h3>A base que acelera carreiras</h3><p>Profissionais com colaboração, relacionamento interpessoal, resiliência e adaptabilidade aprendem novas competências com mais rapidez e transitam melhor entre funções.</p><blockquote>Empatia, comunicação e liderança seguem como diferenciais centrais em um mercado transformado pela IA.</blockquote><a class="source-link" href="https://store.hbr.org/product/soft-skills-matter-now-more-than-ever-according-to-new-research/H08VGH" target="_blank" rel="noopener noreferrer">Acessar publicação original ↗</a></article></div>
+  <div class="modal article-modal" id="modalArtigo3" role="dialog" aria-modal="true" aria-labelledby="art3-title" hidden><div class="modal-backdrop" data-close></div><article class="modal-panel"><button class="modal-close" type="button" data-close aria-label="Fechar">×</button><span class="eyebrow">FGV · Futuro do trabalho</span><h2 id="art3-title">O mercado do futuro e as novas tecnologias</h2><p>Análise da FGV, baseada em estudos da força-tarefa do MIT, explora o impacto real das novas tecnologias nas profissões.</p><h3>Inovação e demanda</h3><p>A evolução tecnológica não aponta necessariamente para desemprego estrutural em massa, mas aumenta a demanda por adaptação e especialização.</p><blockquote>Aprendizagem contínua e qualidade do emprego serão fatores decisivos para empresas e profissionais.</blockquote><a class="source-link" href="https://portal.fgv.br/artigos/mercado-trabalho-futuro" target="_blank" rel="noopener noreferrer">Acessar publicação original ↗</a></article></div>
+</body>
+</html>

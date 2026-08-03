@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /painel_rh.html
+
+# Troque "https://seu-dominio" pelo domínio oficial assim que estiver publicado.
+Sitemap: https://seu-dominio/sitemap.xml
