@@ -121,7 +121,7 @@ begin
   if email_normalizado !~ '^[^@[:space:]]+@[^@[:space:]]+\.[^@[:space:]]+$' then
     raise exception 'E-mail inválido';
   end if;
-  if p_url_curriculo not like 'https://SEU-PROJETO.supabase.co/storage/v1/object/public/curriculos/%' then
+  if p_url_curriculo not like 'https://qaviuelxsokbdpllqrap.supabase.co/storage/v1/object/public/curriculos/%' then
     raise exception 'Endereço de currículo inválido';
   end if;
 
@@ -215,10 +215,3 @@ grant insert on public.candidaturas_vagas to anon;
 grant all on public.candidaturas_vagas to authenticated;
 
 notify pgrst, 'reload schema';
-
--- ============================================================
--- IMPORTANTE: depois de rodar este script, troque
--- "SEU-PROJETO.supabase.co" acima (dentro da função
--- registrar_candidato_publico) pela URL real do seu projeto e rode de
--- novo só o bloco "create or replace function" para atualizar.
--- ============================================================

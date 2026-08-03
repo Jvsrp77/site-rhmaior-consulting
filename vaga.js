@@ -1,4 +1,4 @@
-const SUPABASE_URL="https://SEU-PROJETO.supabase.co",SUPABASE_ANON_KEY="SUA_CHAVE_ANON_AQUI";
+const SUPABASE_URL="https://qaviuelxsokbdpllqrap.supabase.co",SUPABASE_ANON_KEY="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFhdml1ZWx4c29rYmRwbGxxcmFwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODU3Nzg4OTYsImV4cCI6MjEwMTM1NDg5Nn0.zvk7kGck96OM3kyTfLE-5Rr968ErvAYDXPKoA2f_e_s";
 const supabaseClient=window.supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY),$=id=>document.getElementById(id);let job=null,activeModal=null;
 function make(tag,className,text){const el=document.createElement(tag);if(className)el.className=className;if(text!==undefined)el.textContent=text;return el}
 function renderSection(parent,title,text){if(!text)return;parent.append(make("h2","",title),make("p","",text))}

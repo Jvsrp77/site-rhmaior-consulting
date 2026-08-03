@@ -39,7 +39,7 @@ begin
   if email_normalizado !~ '^[^@[:space:]]+@[^@[:space:]]+\.[^@[:space:]]+$' then
     raise exception 'E-mail inválido';
   end if;
-  if p_url_curriculo not like 'https://SEU-PROJETO.supabase.co/storage/v1/object/public/curriculos/%' then
+  if p_url_curriculo not like 'https://qaviuelxsokbdpllqrap.supabase.co/storage/v1/object/public/curriculos/%' then
     raise exception 'Endereço de currículo inválido';
   end if;
 
