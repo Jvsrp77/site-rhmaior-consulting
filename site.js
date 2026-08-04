@@ -196,26 +196,20 @@ const fitProfiles = {
   operacoes: { title: "Perfil de operações", caption: "Disciplina, adaptabilidade e consistência para ambientes dinâmicos.", values: [88, 73, 95, 86, 79] }
 };
 const fitLabels = ["Conhecimento", "Liderança", "Adaptabilidade", "Comunicação", "Contexto cultural"];
-const fitCanvas = byId("fit-chart"); const fitContext = fitCanvas.getContext("2d"); let fitValues = [...fitProfiles.lideranca.values]; let fitAnimation = 0;
+const fitChartRoot = byId("fit-chart");
 
-function fitPoint(index, value, radius, centerX, centerY) {
-  const angle = -Math.PI / 2 + index * Math.PI * 2 / fitLabels.length;
-  return [centerX + Math.cos(angle) * radius * value / 100, centerY + Math.sin(angle) * radius * value / 100];
-}
-
-function drawFitChart(values) {
-  const bounds = fitCanvas.getBoundingClientRect(); const ratio = Math.min(window.devicePixelRatio || 1, 2); const width = bounds.width; const height = bounds.height;
-  fitCanvas.width = Math.round(width * ratio); fitCanvas.height = Math.round(height * ratio); fitContext.setTransform(ratio, 0, 0, ratio, 0, 0); fitContext.clearRect(0, 0, width, height);
-  const centerX = width / 2; const centerY = height / 2; const radius = Math.min(width, height) * .35;
-  for (let level = 1; level <= 4; level += 1) {
-    fitContext.beginPath();
-    fitLabels.forEach((_, index) => { const [x, y] = fitPoint(index, level * 25, radius, centerX, centerY); index ? fitContext.lineTo(x, y) : fitContext.moveTo(x, y); });
-    fitContext.closePath(); fitContext.strokeStyle = "rgba(255,255,255,.11)"; fitContext.lineWidth = 1; fitContext.stroke();
-  }
-  fitLabels.forEach((_, index) => { const [x, y] = fitPoint(index, 100, radius, centerX, centerY); fitContext.beginPath(); fitContext.moveTo(centerX, centerY); fitContext.lineTo(x, y); fitContext.strokeStyle = "rgba(255,255,255,.08)"; fitContext.stroke(); });
-  const gradient = fitContext.createRadialGradient(centerX, centerY, 5, centerX, centerY, radius); gradient.addColorStop(0, "rgba(255,143,94,.55)"); gradient.addColorStop(1, "rgba(255,107,44,.16)");
-  fitContext.beginPath(); values.forEach((value, index) => { const [x, y] = fitPoint(index, value, radius, centerX, centerY); index ? fitContext.lineTo(x, y) : fitContext.moveTo(x, y); }); fitContext.closePath(); fitContext.fillStyle = gradient; fitContext.fill(); fitContext.strokeStyle = "#ff7b43"; fitContext.lineWidth = 2; fitContext.stroke();
-  values.forEach((value, index) => { const [x, y] = fitPoint(index, value, radius, centerX, centerY); fitContext.beginPath(); fitContext.arc(x, y, 4, 0, Math.PI * 2); fitContext.fillStyle = "#fff"; fitContext.fill(); fitContext.strokeStyle = "#ff6b2c"; fitContext.lineWidth = 3; fitContext.stroke(); });
+function renderFitBars(values) {
+  fitChartRoot.replaceChildren();
+  fitLabels.forEach((label, index) => {
+    const value = values[index];
+    const row = document.createElement("div"); row.className = "fit-bar-row";
+    const label_ = document.createElement("span"); label_.className = "fit-bar-label"; label_.textContent = label;
+    const track = document.createElement("div"); track.className = "fit-bar-track";
+    const fill = document.createElement("i"); fill.style.width = reduceMotion ? `${value}%` : "0%"; track.append(fill);
+    const number = document.createElement("strong"); number.className = "fit-bar-value"; number.textContent = `${Math.round(value)}%`;
+    row.append(label_, track, number); fitChartRoot.append(row);
+    if (!reduceMotion) requestAnimationFrame(() => { fill.style.width = `${value}%`; });
+  });
 }
 
 function renderFitLegend(values) {
@@ -224,18 +218,17 @@ function renderFitLegend(values) {
 }
 
 function selectFitProfile(key) {
-  const profile = fitProfiles[key]; const start = [...fitValues]; const startTime = performance.now(); cancelAnimationFrame(fitAnimation);
-  byId("fit-profile-title").textContent = profile.title; byId("fit-profile-caption").textContent = profile.caption; fitCanvas.setAttribute("aria-label", `Gráfico demonstrativo dos critérios de avaliação para ${profile.title.toLowerCase()}`); renderFitLegend(profile.values);
-  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const animate = (time) => { const progress = reduceMotion ? 1 : Math.min(1, (time - startTime) / 520); const eased = 1 - Math.pow(1 - progress, 3); fitValues = start.map((value, index) => value + (profile.values[index] - value) * eased); drawFitChart(fitValues); if (progress < 1) fitAnimation = requestAnimationFrame(animate); };
-  fitAnimation = requestAnimationFrame(animate);
+  const profile = fitProfiles[key];
+  byId("fit-profile-title").textContent = profile.title; byId("fit-profile-caption").textContent = profile.caption;
+  renderFitLegend(profile.values);
+  renderFitBars(profile.values);
 }
 
 document.querySelectorAll("[data-fit-profile]").forEach(button => button.addEventListener("click", () => {
   document.querySelectorAll("[data-fit-profile]").forEach(item => { const selected = item === button; item.classList.toggle("active", selected); item.setAttribute("aria-pressed", String(selected)); });
   selectFitProfile(button.dataset.fitProfile);
 }));
-renderFitLegend(fitValues); drawFitChart(fitValues); window.addEventListener("resize", () => drawFitChart(fitValues), { passive: true });
+renderFitLegend(fitProfiles.lideranca.values); renderFitBars(fitProfiles.lideranca.values);
 
 const moneyFormatter = new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL", maximumFractionDigits: 0 });
 const compactMoneyFormatter = new Intl.NumberFormat("pt-BR", { notation: "compact", style: "currency", currency: "BRL", maximumFractionDigits: 1 });
@@ -257,13 +250,7 @@ function updateVacancyCost() {
 ["cost-salary", "cost-days", "cost-factor"].forEach(id => byId(id).addEventListener("input", updateVacancyCost));
 updateVacancyCost();
 
-hero.addEventListener("pointermove", (event) => {
-  const bounds = hero.getBoundingClientRect();
-  hero.style.setProperty("--pointer-x", `${event.clientX - bounds.left}px`);
-  hero.style.setProperty("--pointer-y", `${event.clientY - bounds.top}px`);
-});
-
-const canTilt = !reduceMotion && window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+const canTilt = false; // identidade "corporativo sólido" da MaioRH não usa inclinação 3D nos cards
 function attachTilt(card) {
   if (!canTilt) return;
   card.addEventListener("pointermove", (event) => {
