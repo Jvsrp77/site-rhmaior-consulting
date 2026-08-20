@@ -25,12 +25,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=20260820j">
   <link rel="manifest" href="site.webmanifest">
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.111.0" defer></script>
   <script src="config.js" defer></script>
   <script src="candidate-service.js" defer></script>
-  <script src="site.js" defer></script>
+  <script src="site.js?v=20260820j" defer></script>
 </head>
 <body>
   <div class="scroll-progress" aria-hidden="true"><i></i></div>
@@ -101,10 +101,10 @@
 
     <section class="signal-section">
       <div class="container signal-grid">
-        <article class="signal-statement reveal">
-          <span class="signal-index">MAIOR RH / 2026</span>
-          <h2>Gente não é apenas recurso.<br><em>É vantagem competitiva.</em></h2>
-          <p>Cada contratação é uma decisão de negócio. Por isso, traduzimos estratégia em critérios claros e encontramos quem pode realmente gerar impacto.</p>
+        <article class="signal-statement reveal scroll-stagger">
+          <span class="signal-index" data-stagger>MAIOR RH / 2026</span>
+          <h2 data-stagger>Gente não é apenas recurso.<br><em>É vantagem competitiva.</em></h2>
+          <p data-stagger>Cada contratação é uma decisão de negócio. Por isso, traduzimos estratégia em critérios claros e encontramos quem pode realmente gerar impacto.</p>
         </article>
         <div class="signal-bento">
           <article class="signal-card signal-card-dark reveal"><span>01</span><strong>Visão<br>de negócio</strong><p>O perfil nasce do desafio, não de uma descrição genérica.</p><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M9 7h8v8"/></svg></i></article>
@@ -116,11 +116,17 @@
 
     <section class="section" id="solucoes">
       <div class="container">
-        <div class="section-heading reveal"><div><span class="eyebrow">Soluções corporativas</span><h2>Recrutamento pensado para o seu próximo passo.</h2></div><p>Da necessidade pontual à construção de times estratégicos, desenhamos cada processo com profundidade, agilidade e transparência.</p></div>
-        <div class="service-grid">
-          <article class="service-card service-featured reveal service-stagger"><span class="service-number">01</span><div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2.2"/><path d="M8 8h8"/><path d="M8 12h5"/><path d="M8 16.2l2 2 4-4.4"/></svg></div><h3>Recrutamento & Seleção</h3><p>Mapeamento completo do perfil, triagem qualificada e avaliação técnica e comportamental.</p><button type="button" data-open="empresa" data-service="Recrutamento e Seleção">Conhecer solução <span>→</span></button></article>
-          <article class="service-card reveal service-stagger"><span class="service-number">02</span><div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="6.2"/><path d="M14.7 14.7L20 20"/><path d="M10 6.6l.9 2.5 2.5.9-2.5.9-.9 2.5-.9-2.5-2.5-.9 2.5-.9z" fill="currentColor" stroke="none"/></svg></div><h3>Executive Search</h3><p>Busca ativa e confidencial para posições críticas, especialistas e lideranças.</p><button type="button" data-open="empresa" data-service="Executive Search / Hunting">Conhecer solução <span>→</span></button></article>
-          <article class="service-card reveal service-stagger"><span class="service-number">03</span><div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="10" width="8" height="8" rx="2"/><rect x="8.5" y="6" width="8" height="8" rx="2"/><rect x="14" y="10" width="8" height="8" rx="2"/></svg></div><h3>Temporários</h3><p>Flexibilidade operacional com contratação ágil e profissionais preparados para a demanda.</p><button type="button" data-open="empresa" data-service="Mão de Obra Temporária">Conhecer solução <span>→</span></button></article>
+        <div class="solucoes-pin-layout">
+          <div class="solucoes-pin-sticky reveal">
+            <span class="eyebrow">Soluções corporativas</span>
+            <h2>Recrutamento pensado para o seu próximo passo.</h2>
+            <p>Da necessidade pontual à construção de times estratégicos, desenhamos cada processo com profundidade, agilidade e transparência.</p>
+          </div>
+          <div class="service-grid scroll-stagger">
+            <article class="service-card service-featured" data-stagger><span class="service-number">01</span><div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2.2"/><path d="M8 8h8"/><path d="M8 12h5"/><path d="M8 16.2l2 2 4-4.4"/></svg></div><h3>Recrutamento & Seleção</h3><p>Mapeamento completo do perfil, triagem qualificada e avaliação técnica e comportamental.</p><button type="button" data-open="empresa" data-service="Recrutamento e Seleção">Conhecer solução <span>→</span></button></article>
+            <article class="service-card" data-stagger><span class="service-number">02</span><div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="6.2"/><path d="M14.7 14.7L20 20"/><path d="M10 6.6l.9 2.5 2.5.9-2.5.9-.9 2.5-.9-2.5-2.5-.9 2.5-.9z" fill="currentColor" stroke="none"/></svg></div><h3>Executive Search</h3><p>Busca ativa e confidencial para posições críticas, especialistas e lideranças.</p><button type="button" data-open="empresa" data-service="Executive Search / Hunting">Conhecer solução <span>→</span></button></article>
+            <article class="service-card" data-stagger><span class="service-number">03</span><div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="10" width="8" height="8" rx="2"/><rect x="8.5" y="6" width="8" height="8" rx="2"/><rect x="14" y="10" width="8" height="8" rx="2"/></svg></div><h3>Temporários</h3><p>Flexibilidade operacional com contratação ágil e profissionais preparados para a demanda.</p><button type="button" data-open="empresa" data-service="Mão de Obra Temporária">Conhecer solução <span>→</span></button></article>
+          </div>
         </div>
       </div>
     </section>

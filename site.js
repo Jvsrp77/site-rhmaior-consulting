@@ -318,6 +318,45 @@ const observer = new IntersectionObserver((entries) => entries.forEach((entry) =
 }), { threshold: 0.12 });
 document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
 
+const WINDOW = 0.32;
+const staggerGroups = Array.from(document.querySelectorAll(".scroll-stagger")).map((group) => {
+  const groupRect = group.getBoundingClientRect();
+  const parts = Array.from(group.querySelectorAll("[data-stagger]")).map((el) => {
+    const fraction = groupRect.height > 0 ? (el.getBoundingClientRect().top - groupRect.top) / groupRect.height : 0;
+    return { el, windowStart: Math.min(Math.max(fraction, 0), 1) * (1 - WINDOW) };
+  });
+  return { group, parts };
+}).filter((g) => g.parts.length);
+if (staggerGroups.length) {
+  const clamp01 = (value) => Math.min(Math.max(value, 0), 1);
+  const applyPart = (el, windowStart, progress) => {
+    const local = clamp01((progress - windowStart) / WINDOW);
+    el.style.opacity = String(local);
+    el.style.transform = `translateY(${(1 - local) * 100}px) scale(${0.75 + local * 0.25})`;
+    el.style.filter = `blur(${(1 - local) * 14}px)`;
+  };
+  let ticking = false;
+  function updateStagger() {
+    ticking = false;
+    const vh = window.innerHeight;
+    staggerGroups.forEach(({ group, parts }) => {
+      const rect = group.getBoundingClientRect();
+      const triggerStart = vh;
+      const triggerEnd = -Math.max(rect.height, vh * 0.4);
+      const progress = clamp01((triggerStart - rect.top) / (triggerStart - triggerEnd));
+      parts.forEach(({ el, windowStart }) => applyPart(el, windowStart, progress));
+    });
+  }
+  function requestStaggerUpdate() {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(updateStagger);
+  }
+  window.addEventListener("scroll", requestStaggerUpdate, { passive: true });
+  window.addEventListener("resize", requestStaggerUpdate);
+  updateStagger();
+}
+
 function setFormState(button, status, loading, message = "", error = false) {
   button.disabled = loading;
   button.classList.toggle("is-loading", loading);
