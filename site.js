@@ -263,6 +263,30 @@ function attachTilt(card) {
 }
 document.querySelectorAll(".service-card, .case-card, .signal-card, .insight-card").forEach(attachTilt);
 
+const servicePreviewGrid = byId("service-grid");
+const servicePreview = byId("service-preview");
+const servicePreviewImg = byId("service-preview-img");
+const canHoverPreview = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+if (servicePreviewGrid && servicePreview && servicePreviewImg && canHoverPreview) {
+  const offset = 26;
+  servicePreviewGrid.addEventListener("pointermove", (event) => {
+    const maxX = window.innerWidth - servicePreview.offsetWidth - 16;
+    const maxY = window.innerHeight - servicePreview.offsetHeight - 16;
+    const x = Math.min(event.clientX + offset, maxX);
+    const y = Math.min(event.clientY + offset, maxY);
+    servicePreview.style.transform = `translate3d(${x}px, ${y}px, 0) scale(1)`;
+  });
+  servicePreviewGrid.querySelectorAll(".service-card[data-preview]").forEach((card) => {
+    card.addEventListener("pointerenter", () => {
+      servicePreviewImg.src = card.dataset.preview;
+      servicePreview.classList.add("is-visible");
+    });
+    card.addEventListener("pointerleave", () => {
+      servicePreview.classList.remove("is-visible");
+    });
+  });
+}
+
 function openModal(modal) {
   if (!modal) return;
   lastFocused = document.activeElement;
