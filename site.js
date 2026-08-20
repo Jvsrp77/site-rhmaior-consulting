@@ -357,6 +357,35 @@ if (staggerGroups.length) {
   updateStagger();
 }
 
+const processSteps = Array.from(document.querySelectorAll(".process-list li"));
+if (processSteps.length) {
+  let stepTicking = false;
+  function updateActiveStep() {
+    stepTicking = false;
+    const referenceY = window.innerHeight * 0.4;
+    let closest = null;
+    let closestDistance = Infinity;
+    processSteps.forEach((li) => {
+      const rect = li.getBoundingClientRect();
+      const center = rect.top + rect.height / 2;
+      const distance = Math.abs(center - referenceY);
+      if (distance < closestDistance) {
+        closestDistance = distance;
+        closest = li;
+      }
+    });
+    processSteps.forEach((li) => li.classList.toggle("is-active", li === closest));
+  }
+  function requestActiveStepUpdate() {
+    if (stepTicking) return;
+    stepTicking = true;
+    requestAnimationFrame(updateActiveStep);
+  }
+  window.addEventListener("scroll", requestActiveStepUpdate, { passive: true });
+  window.addEventListener("resize", requestActiveStepUpdate);
+  updateActiveStep();
+}
+
 function setFormState(button, status, loading, message = "", error = false) {
   button.disabled = loading;
   button.classList.toggle("is-loading", loading);
