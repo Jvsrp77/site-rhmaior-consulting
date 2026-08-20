@@ -268,20 +268,35 @@ const servicePreview = byId("service-preview");
 const servicePreviewImg = byId("service-preview-img");
 const canHoverPreview = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
 if (servicePreviewGrid && servicePreview && servicePreviewImg && canHoverPreview) {
-  const offset = 26;
+  const offset = 18;
+  let activeCard = null;
   servicePreviewGrid.addEventListener("pointermove", (event) => {
-    const maxX = window.innerWidth - servicePreview.offsetWidth - 16;
-    const maxY = window.innerHeight - servicePreview.offsetHeight - 16;
-    const x = Math.min(event.clientX + offset, maxX);
-    const y = Math.min(event.clientY + offset, maxY);
+    if (!activeCard) return;
+    const bounds = activeCard.getBoundingClientRect();
+    const minX = bounds.left + 10;
+    const maxX = bounds.right - servicePreview.offsetWidth - 10;
+    const minY = bounds.top + 10;
+    const maxY = bounds.bottom - servicePreview.offsetHeight - 10;
+    const x = Math.min(Math.max(event.clientX + offset, minX), Math.max(maxX, minX));
+    const y = Math.min(Math.max(event.clientY + offset, minY), Math.max(maxY, minY));
     servicePreview.style.transform = `translate3d(${x}px, ${y}px, 0) scale(1)`;
   });
   servicePreviewGrid.querySelectorAll(".service-card[data-preview]").forEach((card) => {
-    card.addEventListener("pointerenter", () => {
+    card.addEventListener("pointerenter", (event) => {
+      activeCard = card;
       servicePreviewImg.src = card.dataset.preview;
       servicePreview.classList.add("is-visible");
+      const bounds = card.getBoundingClientRect();
+      const minX = bounds.left + 10;
+      const maxX = Math.max(bounds.right - servicePreview.offsetWidth - 10, minX);
+      const minY = bounds.top + 10;
+      const maxY = Math.max(bounds.bottom - servicePreview.offsetHeight - 10, minY);
+      const x = Math.min(Math.max(event.clientX + offset, minX), maxX);
+      const y = Math.min(Math.max(event.clientY + offset, minY), maxY);
+      servicePreview.style.transform = `translate3d(${x}px, ${y}px, 0) scale(1)`;
     });
     card.addEventListener("pointerleave", () => {
+      activeCard = null;
       servicePreview.classList.remove("is-visible");
     });
   });
