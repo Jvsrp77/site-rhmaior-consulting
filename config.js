@@ -5,11 +5,11 @@ window.MAIORH_CONFIG = Object.freeze({
   analyticsId: "",
   privacyEmail: "",
   organization: {
-    name: "MaioRH",
-    legalName: "",
+    name: "RhMaior Consulting",
+    legalName: "RH Maior Consulting",
     description: "Consultoria especializada em recrutamento, seleção, executive search e mão de obra temporária.",
-    city: "",
-    state: "",
+    city: "São José dos Campos",
+    state: "SP",
     country: "BR",
     logoUrl: "",
     linkedInUrl: ""
