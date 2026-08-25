@@ -1,5 +1,5 @@
 window.MAIORH_CONFIG = Object.freeze({
-  siteUrl: "",
+  siteUrl: "https://glowing-pithivier-f2a82e.netlify.app",
   whatsappNumber: "5512991770400",
   schedulingUrl: "",
   analyticsId: "",
