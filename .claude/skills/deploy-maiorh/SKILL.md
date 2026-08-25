@@ -5,7 +5,7 @@ description: Use sempre que o usuário pedir para publicar, subir, dar deploy, e
 
 # Deploy do site MaioRH
 
-Este site ainda não tem deploy automático (sem remote configurado até o momento em que esta skill foi escrita) — "publicar" aqui significa, no mínimo, commitar as mudanças localmente, e possivelmente fazer push se/quando houver um remote configurado.
+Este site não tem deploy automático nem remote git configurado — "publicar" significa: commitar localmente (com aprovação do usuário), sincronizar a pasta `site MaioRH-deploy` (só os arquivos servíveis, sem `.git`/`.claude`/`.sql`/`.md`) e o usuário mesmo arrastar essa pasta em **app.netlify.com/drop** no navegador dele. O assistente não consegue fazer esse arrasto por conta própria (é interação do sistema de arquivos local do usuário com o navegador dele) — apenas deixa a pasta pronta e instrui os passos.
 
 O backend (Supabase) já está criado e conectado (projeto `qaviuelxsokbdpllqrap`, credenciais reais já embutidas em site.js/vagas.js/vaga.js/painel.js) — não confundir com o estado inicial do projeto, quando ainda usava placeholders.
 
@@ -37,4 +37,4 @@ Se o repositório ainda não tiver um remote configurado, avise o usuário em ve
 
 ## Identidade visual deste site
 
-A MaioRH tem identidade visual própria e deliberadamente diferente do site irmão (América): tipografia serifada (Fraunces + IBM Plex Sans), sem radar/glow/marquee, cantos quase retos, roxo mais profundo (`#6b21a8`) e dourado (`#c9a227`) como assinatura, e um motivo gráfico de "picos ascendentes" (do próprio logo) usado como recorte de seção e no rodapé. Não reintroduzir elementos visuais copiados do site da América aqui.
+O site adota a marca real da empresa (RhMaior Consulting, rhmetodo.com.br/maiorh.com.br): tipografia serifada (Fraunces + IBM Plex Sans), cantos quase retos, e a paleta azul petróleo do logo real (`--ink:#0a1d26`, `--orange:#217ba8`, `--gold:#419dcc`) — não é mais roxo/dourado, isso foi uma identidade provisória usada antes de ter acesso à marca real. O logo é a seta em duas tonalidades de azul (vetorizada em `.brand-mark`, `favicon.svg` e nos favicons/og-image gerados via PIL). Não reintroduzir roxo/dourado nem elementos visuais copiados do site irmão (América) aqui.

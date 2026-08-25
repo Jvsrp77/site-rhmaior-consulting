@@ -64,7 +64,7 @@
   function message(error) {
     if (error?.formCode === "existing-email") return "O envio do PDF funcionou, mas falta ativar a função registrar_candidato_publico no Supabase para atualizar este e-mail.";
     if (error?.formCode === "storage") return "O PDF não pôde ser armazenado. Verifique a política de upload do bucket curriculos.";
-    return "Não foi possível salvar seus dados agora. Tente novamente ou entre em contato com a RhMaior.";
+    return "Não foi possível salvar seus dados agora. Tente novamente ou entre em contato com a RHMaior.";
   }
 
   window.MaioRHCandidates = Object.freeze({ submit, message });

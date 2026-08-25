@@ -32,5 +32,4 @@
 .primary-button,.logout-button,.job-toggle,.nav-item,.refresh-button,.search-box,.select-box,.inline-status{border-radius:2px!important}
 
 /* Marca real da empresa: rhmaior consulting */
-.brand strong{text-transform:lowercase}
 .brand small{text-transform:lowercase;letter-spacing:.5px;font-style:italic}

@@ -5,7 +5,7 @@ window.MAIORH_CONFIG = Object.freeze({
   analyticsId: "",
   privacyEmail: "",
   organization: {
-    name: "RhMaior Consulting",
+    name: "RHMaior Consulting",
     legalName: "RH Maior Consulting",
     description: "Consultoria especializada em recrutamento, seleção, executive search e mão de obra temporária.",
     city: "São José dos Campos",

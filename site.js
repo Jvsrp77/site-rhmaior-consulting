@@ -56,7 +56,7 @@ animateCounters();
 
 function configureExternalServices() {
   const organization = siteConfig.organization || {};
-  const structuredData = { "@context": "https://schema.org", "@type": "Organization", name: organization.name || "RhMaior Consulting", description: organization.description };
+  const structuredData = { "@context": "https://schema.org", "@type": "Organization", name: organization.name || "RHMaior Consulting", description: organization.description };
   if (siteConfig.siteUrl) structuredData.url = siteConfig.siteUrl;
   if (organization.legalName) structuredData.legalName = organization.legalName;
   if (organization.logoUrl) structuredData.logo = organization.logoUrl;
@@ -64,7 +64,7 @@ function configureExternalServices() {
   if (organization.city || organization.state) structuredData.address = { "@type": "PostalAddress", addressLocality: organization.city, addressRegion: organization.state, addressCountry: organization.country || "BR" };
   if (organization.linkedInUrl) structuredData.sameAs = [organization.linkedInUrl];
   const schema = document.createElement("script"); schema.type = "application/ld+json"; schema.textContent = JSON.stringify(structuredData); document.head.append(schema);
-  if (siteConfig.whatsappNumber) { const link=byId("quick-whatsapp");const digits=String(siteConfig.whatsappNumber).replace(/\D/g,"");link.href=`https://wa.me/${digits}?text=${encodeURIComponent("Olá! Gostaria de conversar com a RhMaior.")}`;link.hidden=false; }
+  if (siteConfig.whatsappNumber) { const link=byId("quick-whatsapp");const digits=String(siteConfig.whatsappNumber).replace(/\D/g,"");link.href=`https://wa.me/${digits}?text=${encodeURIComponent("Olá! Gostaria de conversar com a RHMaior.")}`;link.hidden=false; }
   if (siteConfig.schedulingUrl) { const link=byId("quick-schedule");link.href=siteConfig.schedulingUrl;link.hidden=false; }
   if (organization.linkedInUrl) { const link=byId("footer-linkedin");link.href=organization.linkedInUrl;link.hidden=false; }
 }
@@ -444,7 +444,7 @@ function showCandidateSuccess(name) {
     panel.append(success);
   }
   const firstName = name.trim().split(/\s+/)[0] || "";
-  success.querySelector(".success-message").textContent = `${firstName ? `${firstName}, seu perfil` : "Seu perfil"} agora faz parte do nosso banco de talentos. Obrigado por confiar sua trajetória à RhMaior.`;
+  success.querySelector(".success-message").textContent = `${firstName ? `${firstName}, seu perfil` : "Seu perfil"} agora faz parte do nosso banco de talentos. Obrigado por confiar sua trajetória à RHMaior.`;
   success.hidden = false;
   panel.scrollTo({ top: 0, behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
   success.querySelector("a, button")?.focus();
