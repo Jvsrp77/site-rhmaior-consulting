@@ -1,6 +1,6 @@
 window.MAIORH_CONFIG = Object.freeze({
   siteUrl: "",
-  whatsappNumber: "",
+  whatsappNumber: "5512991770400",
   schedulingUrl: "",
   analyticsId: "",
   privacyEmail: "",
