@@ -94,6 +94,21 @@ O script é incremental: não remove dados, tabelas, colunas ou políticas exist
 - `robots.txt`: agora referencia o `sitemap.xml` e bloqueia a indexação de `painel_rh.html` (que também recebeu `<meta name="robots" content="noindex,nofollow">` diretamente no HTML).
 - Banner de cookies: `index.html` exibe um aviso de consentimento antes de carregar o Google Analytics. O Analytics só é carregado após o clique em "Aceitar"; a escolha fica salva no navegador do visitante. Isso só entra em ação quando `analyticsId` for preenchido em `config.js`.
 
+## Aviso automático por e-mail de novos candidatos e leads
+
+Para não depender de alguém abrir o Portal RH manualmente todo dia, o
+arquivo `ATIVAR_NOTIFICACOES_EMAIL.sql` configura um aviso por e-mail
+automático (via Resend, gratuito até 3.000 e-mails/mês) toda vez que
+um candidato se cadastra ou uma empresa entra em contato.
+
+1. Crie uma conta gratuita em [resend.com](https://resend.com) e gere
+   uma API key em "API Keys".
+2. Abra `ATIVAR_NOTIFICACOES_EMAIL.sql`, substitua os três valores de
+   exemplo (chave do Resend, e-mail de destino e remetente) e rode o
+   script inteiro no SQL Editor do Supabase.
+3. Cadastre um candidato ou lead de teste no site e confirme que o
+   e-mail chegou.
+
 ## Conteúdo que ainda depende da empresa
 
 Para publicar prova social real, substitua os cases genéricos por resultados autorizados e forneça:
