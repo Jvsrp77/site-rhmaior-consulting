@@ -33,3 +33,5 @@
 
 /* Marca real da empresa: rhmaior consulting */
 .brand small{text-transform:lowercase;letter-spacing:.5px;font-style:italic}
+.brand-logo{height:36px;width:auto;display:block;background:#fff;border-radius:10px;padding:7px 12px;box-shadow:0 1px 3px rgba(5,12,23,.12)}
+.sidebar .brand-logo{height:30px}

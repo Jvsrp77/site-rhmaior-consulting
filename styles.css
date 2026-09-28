@@ -263,3 +263,16 @@ body{background:var(--paper)}
 .brand small{text-transform:lowercase;letter-spacing:.5px;font-style:italic;font-size:11px}
 .logo-strip img{display:block;width:auto;filter:grayscale(1);opacity:.75;transition:filter .25s ease,opacity .25s ease}
 .logo-strip img:hover{filter:none;opacity:1}
+
+/* Logo real da marca (substitui o ícone + texto) */
+.brand-logo{height:36px;width:auto;display:block;background:#fff;border-radius:10px;padding:7px 12px;box-shadow:0 1px 3px rgba(5,12,23,.12)}
+.footer-grid .brand-logo{height:44px}
+@media(max-width:650px){.brand-logo{height:30px;padding:6px 10px}}
+
+/* Missão/Visão/Valores: 3 colunas em vez do grid original de 4 itens (2x2) */
+.about-values-3{grid-template-columns:repeat(3,1fr)}
+.about-values-3 article{border-bottom:0!important}
+.about-values-3 article:nth-child(even){border-right:1px solid var(--line)}
+.about-values-3 article:last-child{border-right:0}
+.about-values-3 span{color:var(--orange);font-weight:700;font-size:11px;text-transform:uppercase;letter-spacing:1px}
+@media(max-width:650px){.about-values-3{grid-template-columns:1fr}.about-values-3 article{border-right:0!important;border-bottom:1px solid var(--line)!important}.about-values-3 article:last-child{border-bottom:0!important}}
