@@ -276,3 +276,15 @@ body{background:var(--paper)}
 .about-values-3 article:last-child{border-right:0}
 .about-values-3 span{color:var(--orange);font-weight:700;font-size:11px;text-transform:uppercase;letter-spacing:1px}
 @media(max-width:650px){.about-values-3{grid-template-columns:1fr}.about-values-3 article{border-right:0!important;border-bottom:1px solid var(--line)!important}.about-values-3 article:last-child{border-bottom:0!important}}
+
+/* Onde estamos: 7 unidades reais */
+.locations-section{background:#f4f6f2}
+.locations-heading{max-width:620px;margin:0 auto 50px;text-align:center}
+.locations-heading .eyebrow{justify-content:center}
+.locations-heading p{color:var(--muted);margin:14px 0 0}
+.locations-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+.location-card{background:#fff;border:1px solid var(--line);border-top:3px solid var(--gold);border-radius:16px;padding:24px}
+.location-card h3{font-family:var(--display);font-size:19px;letter-spacing:-.3px;margin:0 0 10px}
+.location-card p{color:var(--muted);font-size:13px;line-height:1.5;margin:0 0 16px}
+.location-card a{display:inline-flex;align-items:center;color:var(--orange);font-weight:700;font-size:13px;text-decoration:none}
+.location-card a:hover{text-decoration:underline}
