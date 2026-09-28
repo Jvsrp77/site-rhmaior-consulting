@@ -217,18 +217,34 @@ function renderFitLegend(values) {
   fitLabels.forEach((label, index) => { const item = document.createElement("div"); const marker = document.createElement("i"); const text = document.createElement("span"); text.textContent = label; const level = document.createElement("strong"); level.textContent = values[index] >= 90 ? "Essencial" : values[index] >= 82 ? "Alta" : "Relevante"; item.append(marker, text, level); root.append(item); });
 }
 
+let currentFitProfile = "lideranca";
+let fitBarsRevealed = false;
+
 function selectFitProfile(key) {
+  currentFitProfile = key;
   const profile = fitProfiles[key];
   byId("fit-profile-title").textContent = profile.title; byId("fit-profile-caption").textContent = profile.caption;
   renderFitLegend(profile.values);
-  renderFitBars(profile.values);
+  if (fitBarsRevealed) renderFitBars(profile.values);
 }
 
 document.querySelectorAll("[data-fit-profile]").forEach(button => button.addEventListener("click", () => {
   document.querySelectorAll("[data-fit-profile]").forEach(item => { const selected = item === button; item.classList.toggle("active", selected); item.setAttribute("aria-pressed", String(selected)); });
   selectFitProfile(button.dataset.fitProfile);
 }));
-renderFitLegend(fitProfiles.lideranca.values); renderFitBars(fitProfiles.lideranca.values);
+renderFitLegend(fitProfiles.lideranca.values);
+
+const fitLabSection = document.getElementById("mapa-de-aderencia");
+if (fitLabSection) {
+  const fitLabObserver = new IntersectionObserver((entries) => entries.forEach((entry) => {
+    if (entry.isIntersecting && !fitBarsRevealed) {
+      fitBarsRevealed = true;
+      renderFitBars(fitProfiles[currentFitProfile].values);
+      fitLabObserver.unobserve(entry.target);
+    }
+  }), { threshold: 0.3 });
+  fitLabObserver.observe(fitLabSection);
+}
 
 const moneyFormatter = new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL", maximumFractionDigits: 0 });
 const compactMoneyFormatter = new Intl.NumberFormat("pt-BR", { notation: "compact", style: "currency", currency: "BRL", maximumFractionDigits: 1 });
