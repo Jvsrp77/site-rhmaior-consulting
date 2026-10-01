@@ -4,6 +4,8 @@ Site institucional e plataforma de recrutamento da **RHMaior Consulting**, consu
 
 🔗 Site no ar: [glowing-pithivier-f2a82e.netlify.app](https://glowing-pithivier-f2a82e.netlify.app)
 
+![Screenshot do site da RHMaior Consulting](screenshot.jpg)
+
 ## O que o projeto faz
 
 - **Site institucional** — apresentação da empresa, soluções de RH, Missão/Visão/Valores, empresas atendidas e as 7 unidades físicas pelo país ("Onde estamos").
