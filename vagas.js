@@ -64,6 +64,25 @@ function openApplication(job){$("application-job-id").value=job.id;$("applicatio
 function closeModal(){if(!activeModal)return;const modal=activeModal;modal.classList.remove("is-open");document.body.classList.remove("modal-open");activeModal=null;setTimeout(()=>modal.hidden=true,220)}
 document.querySelectorAll("[data-close]").forEach(el=>el.addEventListener("click",closeModal));document.addEventListener("keydown",e=>{if(e.key==="Escape")closeModal()});$("job-search").addEventListener("input",()=>renderJobs(false));$("job-mode").addEventListener("change",()=>renderJobs(false));$("job-unit").addEventListener("change",()=>{updateUnitInfo();renderJobs(false)});$("job-near").addEventListener("click",findNearestUnit);
 $("application-form").addEventListener("submit",async(event)=>{event.preventDefault();const button=$("application-submit"),status=$("application-status"),file=$("application-file").files[0];if(!file||!file.name.toLowerCase().endsWith(".pdf")||file.size>10*1024*1024){status.textContent="Envie um PDF válido de até 10 MB.";status.classList.add("is-error");return}button.disabled=true;status.classList.remove("is-error");status.textContent="Enviando candidatura...";try{const path=`${Date.now()}_${crypto.randomUUID()}.pdf`,candidateEmail=$("application-email").value.trim().toLowerCase();const{error:uploadError}=await supabaseClient.storage.from("curriculos").upload(path,file,{contentType:"application/pdf",upsert:false});if(uploadError)throw uploadError;const{data:urlData}=supabaseClient.storage.from("curriculos").getPublicUrl(path);const candidate={nome:$("application-name").value.trim(),email:candidateEmail,telefone:$("application-phone").value.trim(),vaga_interesse:"Vaga específica",url_curriculo:urlData.publicUrl};const{error:candidateError}=await supabaseClient.from("candidatos").upsert([candidate],{onConflict:"email"});if(candidateError)throw candidateError;await supabaseClient.from("candidatos").update({consentimento_lgpd:true,data_consentimento:new Date().toISOString()}).eq("email",candidateEmail);const{error:applicationError}=await supabaseClient.from("candidaturas_vagas").insert([{vaga_id:$("application-job-id").value,candidato_email:candidateEmail}]);if(applicationError)throw applicationError;event.target.reset();status.textContent="Candidatura recebida com sucesso!";setTimeout(closeModal,1800)}catch(error){console.error("Falha na candidatura:",error);status.textContent="Não foi possível concluir. Tente novamente ou use o banco de talentos.";status.classList.add("is-error")}finally{button.disabled=false}});
+$("alert-form").addEventListener("submit", async (event) => {
+  event.preventDefault();
+  const button = $("alert-submit"), status = $("alert-status"), email = $("alert-email").value.trim().toLowerCase();
+  status.classList.remove("is-error");
+  if (!/^[^@ ]+@[^@ ]+[.][^@ ]+$/.test(email)) { status.textContent = "Informe um e-mail válido."; status.classList.add("is-error"); return; }
+  if (!$("alert-consent").checked) { status.textContent = "Marque a autorização para criar o alerta."; status.classList.add("is-error"); return; }
+  button.disabled = true;
+  status.textContent = "Criando alerta...";
+  const { error } = await supabaseClient.from("alertas_vagas").insert([{ email, area: $("alert-area").value || null, unidade: $("alert-unit").value || null, consentimento: true }]);
+  button.disabled = false;
+  if (error && error.code !== "23505") {
+    console.error("Falha ao criar alerta:", error);
+    status.textContent = "Não foi possível criar o alerta agora. Tente novamente mais tarde.";
+    status.classList.add("is-error");
+    return;
+  }
+  event.target.reset();
+  status.textContent = "Quase lá! Enviamos um e-mail para você confirmar o alerta. Confira também a caixa de spam.";
+});
 const unitParam = new URLSearchParams(location.search).get("unidade");
 if (unitParam && unitByValue(unitParam)) { $("job-unit").value = unitParam; updateUnitInfo(); }
 loadJobs();
