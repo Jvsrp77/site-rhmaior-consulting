@@ -1,11 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-  Endereço atual: https://glowing-pithivier-f2a82e.netlify.app (Netlify). Se um
-  domínio próprio for conectado no futuro, atualize as URLs abaixo, o
-  config.js e o robots.txt.
-  As vagas individuais (vaga.html?id=...) são geradas dinamicamente a partir do
-  Supabase e devem ser adicionadas aqui conforme forem publicadas/expiradas.
--->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://glowing-pithivier-f2a82e.netlify.app/index.html</loc>
@@ -24,7 +17,7 @@
   </url>
   <url>
     <loc>https://glowing-pithivier-f2a82e.netlify.app/privacidade.html</loc>
-    <changefreq>yearly</changefreq>
+    <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
 </urlset>
