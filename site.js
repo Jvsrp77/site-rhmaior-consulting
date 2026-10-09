@@ -528,3 +528,58 @@ byId("formEmpresa").addEventListener("submit", async (event) => {
   layout.classList.add("is-interactive");
   select(cards[0].dataset.unit);
 })();
+
+(function setupNearestWhatsapp() {
+  const link = byId("quick-whatsapp");
+  if (!link || link.hidden || !navigator.geolocation) return;
+  const UNITS = [
+    { name: "São José dos Campos", lat: -23.2237, lon: -45.9009, whatsapp: "5512991770400" },
+    { name: "São Paulo", lat: -23.5505, lon: -46.6333, whatsapp: "5519993618825" },
+    { name: "Campinas", lat: -22.9099, lon: -47.0626, whatsapp: "5519993618825" },
+    { name: "Jundiaí", lat: -23.1857, lon: -46.8978, whatsapp: "5519993618825" },
+    { name: "Pindamonhangaba", lat: -22.9246, lon: -45.4617, whatsapp: "5512991790889" },
+    { name: "Embu das Artes", lat: -23.6489, lon: -46.8523, whatsapp: "5511976018846" },
+    { name: "Extrema/MG", lat: -22.8545, lon: -46.3178, whatsapp: "5535984717375" }
+  ];
+  const label = link.querySelector("span");
+  const storeKey = "rhmaior-unidade";
+  let located = false, asked = false;
+
+  function distanceKm(lat1, lon1, lat2, lon2) {
+    const rad = Math.PI / 180, dLat = (lat2 - lat1) * rad, dLon = (lon2 - lon1) * rad;
+    const a = Math.sin(dLat / 2) ** 2 + Math.cos(lat1 * rad) * Math.cos(lat2 * rad) * Math.sin(dLon / 2) ** 2;
+    return 6371 * 2 * Math.asin(Math.sqrt(a));
+  }
+  function applyUnit(unit) {
+    const text = `Olá! Gostaria de conversar com a RHMaior (unidade ${unit.name}).`;
+    link.href = `https://wa.me/${unit.whatsapp}?text=${encodeURIComponent(text)}`;
+    label.textContent = `WhatsApp · ${unit.name}`;
+    located = true;
+    try { sessionStorage.setItem(storeKey, unit.name); } catch { /* sem armazenamento disponível */ }
+  }
+  function locate(openAfter) {
+    asked = true;
+    if (openAfter) label.textContent = "Localizando unidade...";
+    navigator.geolocation.getCurrentPosition((pos) => {
+      const { latitude, longitude } = pos.coords;
+      applyUnit(UNITS.map((u) => ({ u, d: distanceKm(latitude, longitude, u.lat, u.lon) })).sort((a, b) => a.d - b.d)[0].u);
+      if (openAfter) window.open(link.href, "_blank", "noopener");
+    }, () => {
+      label.textContent = "WhatsApp";
+      if (openAfter) window.open(link.href, "_blank", "noopener");
+    }, { timeout: 8000, maximumAge: 600000 });
+  }
+
+  let saved = null;
+  try { saved = sessionStorage.getItem(storeKey); } catch { /* ignora */ }
+  const savedUnit = UNITS.find((u) => u.name === saved);
+  if (savedUnit) { applyUnit(savedUnit); asked = true; }
+  else if (navigator.permissions && navigator.permissions.query) {
+    navigator.permissions.query({ name: "geolocation" }).then((status) => { if (status.state === "granted") locate(false); }).catch(() => {});
+  }
+  link.addEventListener("click", (event) => {
+    if (located || asked) return;
+    event.preventDefault();
+    locate(true);
+  });
+})();
