@@ -279,13 +279,42 @@ body{background:var(--paper)}
 /* Onde estamos: 7 unidades reais */
 .locations-section{background:#f4f6f2}
 .locations-heading{max-width:620px;margin:0 auto 50px;text-align:center}
-.locations-route{display:block;width:100%;height:46px;margin:0 0 30px}
-@media(max-width:650px){.locations-route{display:none}}
 .locations-heading .eyebrow{justify-content:center}
 .locations-heading p{color:var(--muted);margin:14px 0 0}
-.locations-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
 .location-card{background:#fff;border:1px solid var(--line);border-top:3px solid var(--gold);border-radius:16px;padding:24px}
 .location-card h3{font-family:var(--display);font-size:19px;letter-spacing:-.3px;margin:0 0 10px}
 .location-card p{color:var(--muted);font-size:13px;line-height:1.5;margin:0 0 16px}
 .location-card a{display:inline-flex;align-items:center;color:var(--orange);font-weight:700;font-size:13px;text-decoration:none}
 .location-card a:hover{text-decoration:underline}
+
+/* Mapa das unidades */
+.units-layout{display:grid;grid-template-columns:1.25fr 1fr;gap:28px;align-items:start}
+.units-map{position:relative;aspect-ratio:640/410;background:var(--ink);border-radius:14px;overflow:hidden;background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:48px 48px}
+.units-map svg{position:absolute;inset:0;width:100%;height:100%}
+.map-rings circle{stroke:rgba(255,255,255,.07);stroke-width:1}
+.map-links line{stroke:var(--gold);stroke-opacity:.45;stroke-width:1.2;stroke-dasharray:3 7}
+.map-pin{position:absolute;transform:translate(-50%,-50%);width:32px;height:32px;padding:0;border:0;background:none;cursor:pointer;display:grid;place-items:center}
+.map-pin i{display:block;width:12px;height:12px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 5px rgba(65,157,204,.22);transition:transform .2s,background .2s,box-shadow .2s}
+.map-pin:hover i,.map-pin:focus-visible i{transform:scale(1.2)}
+.map-pin:focus-visible{outline:2px solid #fff;outline-offset:-2px;border-radius:50%}
+.map-pin em{position:absolute;left:50%;bottom:calc(100% - 2px);transform:translate(-50%,4px);white-space:nowrap;font-style:normal;font-size:12px;font-weight:700;color:#fff;background:rgba(5,17,23,.92);border:1px solid rgba(255,255,255,.12);padding:5px 9px;border-radius:6px;opacity:.82;pointer-events:none;transition:opacity .2s,transform .2s;z-index:2}
+.map-pin:hover em,.map-pin:focus-visible em,.map-pin.is-active em{opacity:1;transform:translate(-50%,0)}
+.map-pin.is-active{z-index:3}
+.map-pin.is-active i{background:#fff;transform:scale(1.25);box-shadow:0 0 0 6px rgba(65,157,204,.5)}
+.map-pin.is-active:after{content:"";position:absolute;width:12px;height:12px;border-radius:50%;border:2px solid var(--gold);animation:pinPulse 1.8s ease-out infinite}
+@keyframes pinPulse{from{transform:scale(1);opacity:.9}to{transform:scale(4);opacity:0}}
+.units-list{display:grid;gap:10px}
+.units-list .location-card{padding:0;border-radius:12px;border-top-width:1px;border-left:3px solid var(--line);transition:border-color .25s,box-shadow .25s}
+.units-list .location-card h3{margin:0}
+.unit-toggle{display:flex;justify-content:space-between;align-items:center;width:100%;padding:16px 20px;background:none;border:0;font:inherit;color:inherit;text-align:left;cursor:default}
+.unit-detail{padding:0 20px 18px}
+.unit-detail p{margin:0 0 12px}
+.unit-detail a{margin-right:18px}
+.units-layout.is-interactive .unit-toggle{cursor:pointer}
+.units-layout.is-interactive .unit-toggle:after{content:"+";color:var(--orange);font-size:22px;line-height:1;font-weight:400}
+.units-layout.is-interactive .location-card.is-active .unit-toggle:after{content:"−"}
+.units-layout.is-interactive .unit-detail{display:none}
+.units-layout.is-interactive .location-card.is-active .unit-detail{display:block}
+.units-layout.is-interactive .location-card.is-active{border-left-color:var(--gold);box-shadow:0 10px 30px rgba(10,29,38,.08)}
+@media(max-width:980px){.units-layout{grid-template-columns:1fr}.map-pin em{font-size:11px;padding:4px 7px}}@media(max-width:650px){.map-pin em{opacity:0}}
+@media(prefers-reduced-motion:reduce){.map-pin.is-active:after{animation:none}}

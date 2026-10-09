@@ -509,3 +509,22 @@ byId("formEmpresa").addEventListener("submit", async (event) => {
     console.error("Falha ao cadastrar lead:", error); setFormState(button, status, false, "Não foi possível enviar agora. Tente novamente.", true);
   }
 });
+
+(function setupUnitsMap() {
+  const layout = document.getElementById("units-layout");
+  if (!layout) return;
+  const pins = [...layout.querySelectorAll(".map-pin")];
+  const cards = [...layout.querySelectorAll(".location-card")];
+  function select(key) {
+    pins.forEach((pin) => pin.classList.toggle("is-active", pin.dataset.unit === key));
+    cards.forEach((card) => {
+      const active = card.dataset.unit === key;
+      card.classList.toggle("is-active", active);
+      card.querySelector(".unit-toggle").setAttribute("aria-expanded", String(active));
+    });
+  }
+  pins.forEach((pin) => pin.addEventListener("click", () => select(pin.dataset.unit)));
+  cards.forEach((card) => card.querySelector(".unit-toggle").addEventListener("click", () => select(card.dataset.unit)));
+  layout.classList.add("is-interactive");
+  select(cards[0].dataset.unit);
+})();

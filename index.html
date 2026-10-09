@@ -25,12 +25,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260928d">
+  <link rel="stylesheet" href="styles.css?v=20261009a">
   <link rel="manifest" href="site.webmanifest">
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.111.0" defer></script>
   <script src="config.js" defer></script>
   <script src="candidate-service.js" defer></script>
-  <script src="site.js?v=20260928d" defer></script>
+  <script src="site.js?v=20261009a" defer></script>
 </head>
 <body>
   <div class="scroll-progress" aria-hidden="true"><i></i></div>
@@ -91,8 +91,8 @@
             <button class="button button-ghost" type="button" data-open="candidato">Enviar currículo <span aria-hidden="true">→</span></button>
           </div>
           <div class="hero-proof hero-proof-next">
-            <div><strong data-count-to="100" data-suffix="%">0%</strong><span>foco em recrutamento e RH</span></div>
-            <div><strong data-count-to="360" data-suffix="°">0°</strong><span>leitura do negócio</span></div>
+            <div><strong data-count-to="25" data-suffix=" anos">0 anos</strong><span>de experiência em recrutamento e RH</span></div>
+            <div><strong data-count-to="7">0</strong><span>unidades em São Paulo e Minas Gerais</span></div>
             <div><strong id="hero-job-count">Ativo</strong><span>banco de oportunidades</span></div>
           </div>
         </div>
@@ -241,19 +241,29 @@
     <section class="section locations-section" id="unidades">
       <div class="container">
         <div class="locations-heading reveal"><span class="eyebrow">Presença nacional</span><h2>7 unidades, prontas para atender sua empresa.</h2><p>Atuação próxima em múltiplas regiões, com equipes locais que entendem o mercado de cada praça.</p></div>
-        <svg class="locations-route reveal" viewBox="0 0 980 70" preserveAspectRatio="none" aria-hidden="true">
-          <path d="M20 42 C 120 6, 190 68, 290 34 S 430 64, 510 28 S 650 60, 730 26 S 870 50, 960 30" fill="none" stroke="var(--line)" stroke-width="2"/>
-          <path d="M20 42 C 120 6, 190 68, 290 34 S 430 64, 510 28 S 650 60, 730 26 S 870 50, 960 30" fill="none" stroke="var(--gold)" stroke-width="2" stroke-dasharray="1 9" stroke-linecap="round"/>
-          <circle cx="20" cy="42" r="5" fill="var(--gold)"/><circle cx="290" cy="34" r="5" fill="var(--gold)"/><circle cx="510" cy="28" r="5" fill="var(--gold)"/><circle cx="730" cy="26" r="5" fill="var(--gold)"/><circle cx="960" cy="30" r="5" fill="var(--gold)"/>
-        </svg>
-        <div class="locations-grid reveal">
-          <article class="location-card"><h3>São José dos Campos</h3><p>Rua Clóvis Bevilaqua, 74 — Jardim Esplanada, SP<br>CEP 12.242-790</p><a href="tel:+5512991770400">(12) 99177-0400</a></article>
-          <article class="location-card"><h3>São Paulo</h3><p>Rua Almirante Brasil, 685, conj. 1708 — Mooca, SP<br>CEP 03.162-010</p><a href="tel:+5519993618825">(19) 99361-8825</a></article>
-          <article class="location-card"><h3>Campinas</h3><p>R. Júlio Frank de Arruda, 75 — Botafogo, SP<br>CEP 13.020-190</p><a href="tel:+5519993618825">(19) 99361-8825</a></article>
-          <article class="location-card"><h3>Jundiaí</h3><p>Rua Bom Jesus de Pirapora, 315 — Via Vianelo, SP<br>CEP 13.207-270</p><a href="tel:+5519993618825">(19) 99361-8825</a></article>
-          <article class="location-card"><h3>Pindamonhangaba</h3><p>Travessa Justiniano Antunes, 35 — Centro, SP<br>CEP 12.400-410</p><a href="tel:+5512991790889">(12) 99179-0889</a></article>
-          <article class="location-card"><h3>Embu das Artes</h3><p>Rua Quirino da Silva, 55 — Jardim Silvia, SP<br>CEP 06.804-050</p><a href="tel:+5511976018846">(11) 97601-8846</a></article>
-          <article class="location-card"><h3>Extrema/MG</h3><p>Rua Melo Viana, 8 — Centro, MG<br>CEP 37.640-000</p><a href="tel:+5535984717375">(35) 98471-7375</a></article>
+        <div class="units-layout reveal" id="units-layout">
+          <div class="units-map">
+            <svg viewBox="0 0 640 410" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+              <g class="map-rings" fill="none"><circle cx="208.9" cy="315.5" r="90"/><circle cx="208.9" cy="315.5" r="190"/><circle cx="208.9" cy="315.5" r="300"/></g>
+              <g class="map-links"><line x1="208.9" y1="315.5" x2="421.2" y2="212.5"/><line x1="208.9" y1="315.5" x2="84.4" y2="113.5"/><line x1="208.9" y1="315.5" x2="132.2" y2="200.5"/><line x1="208.9" y1="315.5" x2="548.5" y2="118.1"/><line x1="208.9" y1="315.5" x2="145.4" y2="346.6"/><line x1="208.9" y1="315.5" x2="300.3" y2="96.0"/></g>
+            </svg>
+            <button class="map-pin" type="button" data-unit="sjc" style="left:65.8%;top:51.8%" aria-label="São José dos Campos"><i></i><em>São José dos Campos</em></button>
+            <button class="map-pin" type="button" data-unit="sp" style="left:32.6%;top:77.0%" aria-label="São Paulo"><i></i><em>São Paulo</em></button>
+            <button class="map-pin" type="button" data-unit="campinas" style="left:13.2%;top:27.7%" aria-label="Campinas"><i></i><em>Campinas</em></button>
+            <button class="map-pin" type="button" data-unit="jundiai" style="left:20.7%;top:48.9%" aria-label="Jundiaí"><i></i><em>Jundiaí</em></button>
+            <button class="map-pin" type="button" data-unit="pinda" style="left:85.7%;top:28.8%" aria-label="Pindamonhangaba"><i></i><em>Pindamonhangaba</em></button>
+            <button class="map-pin" type="button" data-unit="embu" style="left:22.7%;top:84.5%" aria-label="Embu das Artes"><i></i><em>Embu das Artes</em></button>
+            <button class="map-pin" type="button" data-unit="extrema" style="left:46.9%;top:23.4%" aria-label="Extrema/MG"><i></i><em>Extrema/MG</em></button>
+          </div>
+          <div class="units-list">
+            <article class="location-card" data-unit="sjc"><h3><button class="unit-toggle" type="button" aria-expanded="false">São José dos Campos</button></h3><div class="unit-detail"><p>Rua Clóvis Bevilaqua, 74 — Jardim Esplanada, SP<br>CEP 12.242-790</p><a href="tel:+5512991770400">(12) 99177-0400</a><a class="unit-jobs" href="vagas.html?unidade=São José dos Campos">Ver vagas desta unidade →</a></div></article>
+            <article class="location-card" data-unit="sp"><h3><button class="unit-toggle" type="button" aria-expanded="false">São Paulo</button></h3><div class="unit-detail"><p>Rua Almirante Brasil, 685, conj. 1708 — Mooca, SP<br>CEP 03.162-010</p><a href="tel:+5519993618825">(19) 99361-8825</a><a class="unit-jobs" href="vagas.html?unidade=São Paulo">Ver vagas desta unidade →</a></div></article>
+            <article class="location-card" data-unit="campinas"><h3><button class="unit-toggle" type="button" aria-expanded="false">Campinas</button></h3><div class="unit-detail"><p>R. Júlio Frank de Arruda, 75 — Botafogo, SP<br>CEP 13.020-190</p><a href="tel:+5519993618825">(19) 99361-8825</a><a class="unit-jobs" href="vagas.html?unidade=Campinas">Ver vagas desta unidade →</a></div></article>
+            <article class="location-card" data-unit="jundiai"><h3><button class="unit-toggle" type="button" aria-expanded="false">Jundiaí</button></h3><div class="unit-detail"><p>Rua Bom Jesus de Pirapora, 315 — Via Vianelo, SP<br>CEP 13.207-270</p><a href="tel:+5519993618825">(19) 99361-8825</a><a class="unit-jobs" href="vagas.html?unidade=Jundiaí">Ver vagas desta unidade →</a></div></article>
+            <article class="location-card" data-unit="pinda"><h3><button class="unit-toggle" type="button" aria-expanded="false">Pindamonhangaba</button></h3><div class="unit-detail"><p>Travessa Justiniano Antunes, 35 — Centro, SP<br>CEP 12.400-410</p><a href="tel:+5512991790889">(12) 99179-0889</a><a class="unit-jobs" href="vagas.html?unidade=Pindamonhangaba">Ver vagas desta unidade →</a></div></article>
+            <article class="location-card" data-unit="embu"><h3><button class="unit-toggle" type="button" aria-expanded="false">Embu das Artes</button></h3><div class="unit-detail"><p>Rua Quirino da Silva, 55 — Jardim Silvia, SP<br>CEP 06.804-050</p><a href="tel:+5511976018846">(11) 97601-8846</a><a class="unit-jobs" href="vagas.html?unidade=Embu das Artes">Ver vagas desta unidade →</a></div></article>
+            <article class="location-card" data-unit="extrema"><h3><button class="unit-toggle" type="button" aria-expanded="false">Extrema/MG</button></h3><div class="unit-detail"><p>Rua Melo Viana, 8 — Centro, MG<br>CEP 37.640-000</p><a href="tel:+5535984717375">(35) 98471-7375</a><a class="unit-jobs" href="vagas.html?unidade=Extrema">Ver vagas desta unidade →</a></div></article>
+          </div>
         </div>
       </div>
     </section>
