@@ -64,3 +64,4 @@
 .unit-actions .button-ghost:hover{background:rgba(255,255,255,.1)!important}
 .jobs-page .jobs-nav a,.job-detail-page .jobs-nav a{color:#fff}
 .jobs-page .jobs-nav a:hover,.job-detail-page .jobs-nav a:hover{color:var(--gold)}
+.talent-cta p{color:#4f6158}

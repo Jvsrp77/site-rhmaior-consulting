@@ -318,3 +318,21 @@ body{background:var(--paper)}
 .units-layout.is-interactive .location-card.is-active{border-left-color:var(--gold);box-shadow:0 10px 30px rgba(10,29,38,.08)}
 @media(max-width:980px){.units-layout{grid-template-columns:1fr}.map-pin em{font-size:11px;padding:4px 7px}}@media(max-width:650px){.map-pin em{opacity:0}}
 @media(prefers-reduced-motion:reduce){.map-pin.is-active:after{animation:none}}
+
+/* Acessibilidade: contraste mínimo 4.5:1 */
+:root{--muted:#58636f;--accent-text:#1a6a93}
+.eyebrow:not(.eyebrow-dark),.text-link,.insight-category{color:var(--accent-text)}
+.case-card>div span{color:#58636f}
+.cost-result span,.cost-result small{color:#fff}
+.signal-card>span,.signal-card div>span{opacity:.72}
+.process-list b{color:var(--gold)}
+.hero .method-panel-grid p{color:#acbfc9!important}
+.candidate-banner .button-ghost{color:#fff!important;border-color:rgba(255,255,255,.4)!important}
+.candidate-banner .button-ghost:hover{background:rgba(255,255,255,.1)!important}
+.service-featured p{color:#fff}
+.footer-bottom span{color:#8f9ba8}
+.momentum-track i,.signal-index{color:var(--accent-text)}
+.data-total .data-label,.data-total p{color:#fff}
+.data-locations small{color:#a9b8c9}
+.fit-console-foot span{color:#a3b2c4}
+.momentum-strip i{color:var(--accent-text)!important}

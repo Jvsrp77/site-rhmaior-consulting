@@ -554,6 +554,7 @@ byId("formEmpresa").addEventListener("submit", async (event) => {
     const text = `Olá! Gostaria de conversar com a RHMaior (unidade ${unit.name}).`;
     link.href = `https://wa.me/${unit.whatsapp}?text=${encodeURIComponent(text)}`;
     label.textContent = `WhatsApp · ${unit.name}`;
+    link.setAttribute("aria-label", `Conversar pelo WhatsApp com a unidade ${unit.name}`);
     located = true;
     try { sessionStorage.setItem(storeKey, unit.name); } catch { /* sem armazenamento disponível */ }
   }
