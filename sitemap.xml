@@ -20,4 +20,39 @@
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
+  <url>
+    <loc>https://glowing-pithivier-f2a82e.netlify.app/recrutamento-sao-jose-dos-campos.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://glowing-pithivier-f2a82e.netlify.app/recrutamento-sao-paulo.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://glowing-pithivier-f2a82e.netlify.app/recrutamento-campinas.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://glowing-pithivier-f2a82e.netlify.app/recrutamento-jundiai.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://glowing-pithivier-f2a82e.netlify.app/recrutamento-pindamonhangaba.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://glowing-pithivier-f2a82e.netlify.app/recrutamento-embu-das-artes.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://glowing-pithivier-f2a82e.netlify.app/recrutamento-extrema.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 </urlset>

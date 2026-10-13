@@ -43,3 +43,24 @@
 .alert-card .alert-consent a{color:var(--orange)}
 @media(max-width:850px){.alert-card{grid-template-columns:1fr;gap:20px;padding:24px}}
 @media(max-width:480px){.alert-fields{grid-template-columns:1fr}}
+
+/* Páginas de unidade */
+.unit-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.unit-info-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:20px;margin-bottom:50px}
+.unit-box{background:#fff;border:1px solid var(--line);border-top:3px solid var(--gold);border-radius:14px;padding:28px}
+.unit-box h2{font-family:var(--display);font-size:25px;letter-spacing:-.8px;margin:6px 0 14px}
+.unit-box p{color:var(--muted);margin:0 0 14px;line-height:1.6}
+.unit-box ul{margin:0 0 14px;padding-left:18px;color:var(--muted);line-height:1.6;display:grid;gap:8px}
+.unit-box a:not(.text-link){color:var(--orange);font-weight:700;text-decoration:none}
+.unit-more{margin:22px 0 0}
+.unit-others{display:flex;flex-wrap:wrap;align-items:center;gap:14px;margin-top:50px;padding-top:26px;border-top:1px solid var(--line)}
+.unit-others>span{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1.4px;color:var(--muted)}
+.unit-others div{display:flex;flex-wrap:wrap;gap:8px}
+.unit-others a{border:1px solid var(--line);background:#fff;border-radius:999px;padding:8px 14px;font-size:13px;font-weight:600;text-decoration:none;transition:border-color .2s,color .2s}
+.unit-others a:hover{border-color:var(--orange);color:var(--orange)}
+@media(max-width:850px){.unit-info-grid{grid-template-columns:1fr}}
+.unit-cta-buttons{display:flex;flex-wrap:wrap;gap:10px}
+.unit-actions .button-ghost{color:#fff!important;border:1px solid rgba(255,255,255,.4)!important;background:transparent!important}
+.unit-actions .button-ghost:hover{background:rgba(255,255,255,.1)!important}
+.jobs-page .jobs-nav a,.job-detail-page .jobs-nav a{color:#fff}
+.jobs-page .jobs-nav a:hover,.job-detail-page .jobs-nav a:hover{color:var(--gold)}
