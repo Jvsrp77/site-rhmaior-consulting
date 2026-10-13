@@ -374,6 +374,7 @@ if (staggerGroups.length) {
 }
 
 const processSteps = Array.from(document.querySelectorAll(".process-list li"));
+const processList = document.querySelector(".process-list");
 if (processSteps.length) {
   let stepTicking = false;
   function updateActiveStep() {
@@ -390,7 +391,14 @@ if (processSteps.length) {
         closest = li;
       }
     });
-    processSteps.forEach((li) => li.classList.toggle("is-active", li === closest));
+    const activeIndex = processSteps.indexOf(closest);
+    processSteps.forEach((li, index) => {
+      li.classList.toggle("is-active", li === closest);
+      li.classList.toggle("is-done", index < activeIndex);
+    });
+    const listRect = processList.getBoundingClientRect();
+    const progress = Math.min(listRect.height, Math.max(0, referenceY - listRect.top));
+    processList.style.setProperty("--process-progress", `${progress}px`);
   }
   function requestActiveStepUpdate() {
     if (stepTicking) return;
@@ -583,4 +591,33 @@ byId("formEmpresa").addEventListener("submit", async (event) => {
     event.preventDefault();
     locate(true);
   });
+})();
+
+(function setupNavSpy() {
+  const sections = {
+    "#solucoes": ["solucoes"],
+    "#metodo": ["metodo"],
+    "#sobre": ["sobre", "unidades"]
+  };
+  const links = Object.keys(sections).map((href) => ({ link: document.querySelector(`.main-nav > a[href="${href}"]`), ids: sections[href] })).filter((item) => item.link);
+  if (!links.length) return;
+  let ticking = false;
+  function update() {
+    ticking = false;
+    const referenceY = window.innerHeight * 0.35;
+    links.forEach(({ link, ids }) => {
+      const current = ids.some((id) => {
+        const section = document.getElementById(id);
+        if (!section) return false;
+        const rect = section.getBoundingClientRect();
+        return rect.top <= referenceY && rect.bottom > referenceY;
+      });
+      if (current) link.setAttribute("aria-current", "location");
+      else link.removeAttribute("aria-current");
+    });
+  }
+  function request() { if (!ticking) { ticking = true; requestAnimationFrame(update); } }
+  window.addEventListener("scroll", request, { passive: true });
+  window.addEventListener("resize", request);
+  update();
 })();
