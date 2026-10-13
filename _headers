@@ -1,0 +1,25 @@
+# Cabeçalhos do Netlify: segurança e cache.
+# CSP: o único script embutido é o carregador de fontes (onload do <link rel="preload">), liberado pelo hash abaixo.
+# Se mudar esse atributo, recalcule o hash (sha256 do texto exato do onload) ou o site perde as fontes.
+# Para um novo serviço externo (outro script, API ou fonte), inclua o domínio na diretiva correspondente.
+
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), payment=(), usb=(), geolocation=(self)
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-hashes' 'sha256-1jAmyYXcRq6zFldLe/GCgIDJBiOONdXjTLgEFMDnDSM=' https://cdn.jsdelivr.net https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https://www.google-analytics.com https://www.googletagmanager.com; connect-src 'self' https://qaviuelxsokbdpllqrap.supabase.co https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'
+
+# Imagens e arquivos que quase nunca mudam: 7 dias de cache no navegador.
+/*.jpg
+  Cache-Control: public, max-age=604800
+/*.png
+  Cache-Control: public, max-age=604800
+/*.svg
+  Cache-Control: public, max-age=604800
+/*.ico
+  Cache-Control: public, max-age=604800
+/*.webp
+  Cache-Control: public, max-age=604800
+/*.docx
+  Cache-Control: public, max-age=604800
