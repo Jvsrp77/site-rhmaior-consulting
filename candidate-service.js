@@ -52,7 +52,7 @@
 
     const { data: urlData } = client.storage.from("curriculos").getPublicUrl(path);
     try {
-      await registerCandidate(client, { ...candidate, url_curriculo: urlData.publicUrl });
+      await registerCandidate(client, { ...candidate, url_curriculo: path });
       return { path, publicUrl: urlData.publicUrl };
     } catch (error) {
       // Remove somente o arquivo recém-enviado, caso a política permita.

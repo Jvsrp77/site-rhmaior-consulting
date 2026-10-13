@@ -74,7 +74,7 @@ function applicationItem(application) {
     profile.type = "button";
     profile.addEventListener("click", () => { closeApplications(); openCandidate(candidate); });
     actions.append(profile);
-    if (candidate.url_curriculo) actions.append(actionLink("Currículo", candidate.url_curriculo));
+    if (candidate.url_curriculo) { const resume = textElement("button", "action-link", "Currículo"); resume.type = "button"; resume.addEventListener("click", () => openResume(candidate)); actions.append(resume); }
     if (phoneDigits(candidate.telefone)) actions.append(actionLink("WhatsApp", whatsappUrl(candidate), "whatsapp"));
   }
   item.append(head, info, actions);

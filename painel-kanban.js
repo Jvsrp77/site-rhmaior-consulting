@@ -130,10 +130,10 @@ function csvCell(value) {
 
 function exportCandidatesCsv() {
   const list = boardMode === "kanban" ? kanbanCandidates() : filteredCandidates();
-  const header = ["Nome", "E-mail", "Telefone", "Área", "Etapa", "Tags", "Observações", "Currículo", "Cadastro"];
+  const header = ["Nome", "E-mail", "Telefone", "Área", "Etapa", "Tags", "Observações", "Currículo anexado", "Cadastro"];
   const rows = list.map((candidate) => [
     candidate.nome, candidate.email, candidate.telefone, areaOf(candidate), stageLabel(stageOf(candidate)),
-    candidate.tags, candidate.observacoes, candidate.url_curriculo, candidate.created_at ? String(candidate.created_at).slice(0, 10) : ""
+    candidate.tags, candidate.observacoes, candidate.url_curriculo ? "Sim" : "Não", candidate.created_at ? String(candidate.created_at).slice(0, 10) : ""
   ]);
   const csv = "﻿" + [header, ...rows].map((row) => row.map(csvCell).join(";")).join("\r\n");
   const link = document.createElement("a");
