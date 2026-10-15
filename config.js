@@ -2,7 +2,7 @@ window.MAIORH_CONFIG = Object.freeze({
   siteUrl: "https://glowing-pithivier-f2a82e.netlify.app",
   whatsappNumber: "5512991770400",
   schedulingUrl: "",
-  analyticsId: "",
+  analyticsId: "G-YQHQDFR69C",
   privacyEmail: "",
   organization: {
     name: "RHMaior Consulting",

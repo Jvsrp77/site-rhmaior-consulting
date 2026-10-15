@@ -75,6 +75,15 @@ backToTop?.addEventListener("click", () => window.scrollTo({ top: 0, behavior: r
 // Cookies não essenciais (Google Analytics) só carregam após consentimento (LGPD).
 const COOKIE_CONSENT_KEY = "maiorh_cookie_consent";
 
+// Eventos só são enviados quando o visitante aceitou os cookies (o gtag só existe depois do consentimento).
+function trackEvent(name, params) {
+  if (typeof window.gtag === "function") window.gtag("event", name, params || {});
+}
+document.addEventListener("click", (event) => {
+  const link = event.target.closest && event.target.closest('a[href*="wa.me"]');
+  if (link) trackEvent("clique_whatsapp", { texto: (link.textContent || "").trim().slice(0, 40) });
+});
+
 function loadAnalytics() {
   if (!siteConfig.analyticsId) return;
   const script = document.createElement("script");
@@ -429,6 +438,7 @@ function resetCandidateModal() {
 }
 
 function showCandidateSuccess(name) {
+  trackEvent("cadastro_curriculo", { origem: "banco_de_talentos" });
   const modal = byId("modalCandidato");
   const panel = modal.querySelector(".modal-panel");
   panel.querySelector(":scope > .eyebrow").hidden = true;
@@ -511,6 +521,7 @@ byId("formEmpresa").addEventListener("submit", async (event) => {
     let { error } = await supabaseClient.from("leads_empresas").insert([qualifiedLead]);
     if (error && /column|schema cache/i.test(error.message || "")) ({ error } = await supabaseClient.from("leads_empresas").insert([coreLead]));
     if (error) throw error;
+    trackEvent("contato_empresa", { origem: "fale_com_especialista" });
     event.target.reset(); setFormState(button, status, false, "Solicitação recebida. Nossa equipe entrará em contato.");
     window.setTimeout(closeModal, 1800);
   } catch (error) {
