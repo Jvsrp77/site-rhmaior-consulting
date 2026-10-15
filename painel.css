@@ -72,3 +72,14 @@
 .application-info{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;font-size:12px;color:var(--muted)}
 .application-actions{display:flex;flex-wrap:wrap;gap:8px}
 .application-empty{color:var(--muted);font-size:13px;margin:10px 0}
+
+/* Retirar candidatos */
+.drawer-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px;padding-top:18px;border-top:1px solid var(--line)}
+.drawer-archive,.drawer-delete{border:1px solid var(--line);background:#fff;padding:10px 14px;font:inherit;font-size:12px;font-weight:700;cursor:pointer}
+.drawer-archive:hover{border-color:var(--orange);color:var(--orange)}
+.drawer-delete{color:#b3392f;border-color:#e6c4c0}
+.drawer-delete:hover{background:#b3392f;border-color:#b3392f;color:#fff}
+.panel-toast{position:fixed;left:50%;bottom:28px;transform:translateX(-50%);z-index:3000;max-width:min(92vw,520px);background:var(--ink);color:#fff;padding:13px 18px;border-radius:6px;font-size:13px;box-shadow:0 12px 40px rgba(0,0,0,.25)}
+.panel-toast.error{background:#b3392f}
+.action-link.row-delete{color:#b3392f;border-color:#e6c4c0}
+.action-link.row-delete:hover{background:#b3392f;border-color:#b3392f;color:#fff}

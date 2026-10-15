@@ -11,7 +11,8 @@ function kanbanCandidates() {
   const term = normalize(byId("search-input").value), area = byId("area-filter").value;
   return candidates.filter((candidate) =>
     (!term || normalize(`${candidate.nome} ${candidate.email}`).includes(term)) &&
-    (!area || areaOf(candidate) === area));
+    (!area || areaOf(candidate) === area) &&
+    stageOf(candidate) !== "arquivado");
 }
 
 function setKanbanStatus(message, isError = false) {
@@ -62,6 +63,14 @@ function kanbanCard(candidate) {
   profile.addEventListener("click", () => openCandidate(candidate));
   actions.append(profile);
   if (phoneDigits(candidate.telefone)) actions.append(actionLink("WhatsApp", whatsappUrl(candidate), "whatsapp"));
+  const archive = textElement("button", "action-link", "Arquivar");
+  archive.type = "button";
+  archive.addEventListener("click", () => archiveCandidate(candidate));
+  actions.append(archive);
+  const remove = textElement("button", "action-link row-delete", "Excluir");
+  remove.type = "button";
+  remove.addEventListener("click", () => deleteCandidate(candidate));
+  actions.append(remove);
 
   const move = document.createElement("select");
   move.className = "kanban-move";
