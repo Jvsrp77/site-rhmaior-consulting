@@ -83,3 +83,5 @@
 .panel-toast.error{background:#b3392f}
 .action-link.row-delete{color:#b3392f;border-color:#e6c4c0}
 .action-link.row-delete:hover{background:#b3392f;border-color:#b3392f;color:#fff}
+.job-delete{border:1px solid #e6c4c0;background:#fff;color:#b3392f;padding:7px 11px;font:inherit;font-size:10px;font-weight:800;cursor:pointer}
+.job-delete:hover{background:#b3392f;border-color:#b3392f;color:#fff}

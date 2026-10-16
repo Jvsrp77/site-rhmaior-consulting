@@ -111,3 +111,44 @@ function decorateRows() {
 new MutationObserver(decorateRows).observe(byId("lista-candidatos"), { childList: true });
 new MutationObserver(decorateRows).observe(byId("mobile-candidates"), { childList: true });
 decorateRows();
+
+// Gestão de vagas: botão "Excluir" em cada vaga (apaga a vaga e as candidaturas dela; os candidatos continuam no banco de talentos).
+async function deleteJob(job) {
+  const count = applicationsForJob(job).length;
+  const detail = count
+    ? `As ${count} ${count === 1 ? "candidatura" : "candidaturas"} a esta vaga também ${count === 1 ? "será apagada" : "serão apagadas"} (os candidatos continuam no banco de talentos).`
+    : "Esta vaga não tem candidaturas.";
+  const confirmed = window.confirm(`Excluir a vaga "${job.titulo}"?
+
+${detail}
+
+Não dá para desfazer. Se quiser só tirar do site, desative a vaga no botão "Ativa".`);
+  if (!confirmed) return;
+  const { error } = await supabaseClient.from("vagas").delete().eq("id", job.id);
+  if (error) {
+    console.error("Falha ao apagar vaga:", error);
+    toast(`Não foi possível excluir a vaga "${job.titulo}". Tente novamente.`, true);
+    return;
+  }
+  jobs = jobs.filter((item) => String(item.id) !== String(job.id));
+  applications = applications.filter((item) => String(item.vaga_id) !== String(job.id));
+  renderJobsAdmin(false);
+  updateMetrics();
+  toast(`A vaga "${job.titulo}" foi excluída.`);
+}
+
+const previousRenderJobsAdmin = renderJobsAdmin;
+renderJobsAdmin = function (unavailable = false) {
+  previousRenderJobsAdmin(unavailable);
+  if (unavailable) return;
+  byId("admin-jobs-list").querySelectorAll(".admin-job-card").forEach((card, index) => {
+    const job = jobs[index];
+    const actions = card.querySelector(".admin-job-actions");
+    if (!job || !actions || actions.querySelector(".job-delete")) return;
+    const button = textElement("button", "job-delete", "Excluir");
+    button.type = "button";
+    button.addEventListener("click", () => deleteJob(job));
+    actions.append(button);
+  });
+};
+if (jobs.length) renderJobsAdmin(false);
