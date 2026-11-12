@@ -65,3 +65,4 @@
 .jobs-page .jobs-nav a,.job-detail-page .jobs-nav a{color:#fff}
 .jobs-page .jobs-nav a:hover,.job-detail-page .jobs-nav a:hover{color:var(--gold)}
 .talent-cta p{color:#4f6158}
+.jobs-empty{display:flex;flex-direction:column;align-items:center;text-align:center;gap:8px}.jobs-empty span{max-width:560px}.jobs-empty .button{margin-top:14px}

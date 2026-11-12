@@ -115,10 +115,17 @@ function setupCookieConsent() {
 }
 setupCookieConsent();
 
+function setNoJobs(flag) {
+  document.body.classList.toggle("no-jobs", flag);
+  const section = byId("oportunidades-em-dados");
+  if (section) section.classList.toggle("no-jobs", flag);
+}
+
 async function loadPublicSignals() {
   const { data: jobs, error } = await supabaseClient.from("vagas").select("id,titulo,resumo,area,modalidade,cidade,created_at").eq("ativa", true).order("created_at", { ascending: false });
-  if (error) { renderOpportunityDashboard([]); renderFeaturedJobs([]); byId("dashboard-status").textContent = "O painel será atualizado quando o módulo de vagas estiver disponível."; return; }
+  if (error) { setNoJobs(true); renderOpportunityDashboard([]); renderFeaturedJobs([]); byId("dashboard-status").textContent = "O painel será atualizado quando o módulo de vagas estiver disponível."; return; }
   const count = jobs?.length || 0;
+  setNoJobs(count === 0);
   if (count > 0) animateNumber(byId("hero-job-count"), count, { pad: 2 });
   renderOpportunityDashboard(jobs || []);
   renderFeaturedJobs((jobs || []).slice(0, 3));
@@ -318,6 +325,7 @@ document.querySelectorAll("[data-open]").forEach((button) => {
 });
 document.querySelectorAll("[data-article]").forEach((button) => button.addEventListener("click", () => openModal(byId(button.dataset.article))));
 document.querySelectorAll("[data-close]").forEach((button) => button.addEventListener("click", closeModal));
+if (new URLSearchParams(location.search).get("cadastro") === "1") { resetCandidateModal(); openModal(byId("modalCandidato")); }
 document.addEventListener("keydown", (event) => {
   if (event.key === "Escape") closeModal();
   if (event.key === "Tab" && activeModal) {
@@ -487,6 +495,9 @@ function showCandidateSuccess(name) {
 byId("formCandidato").addEventListener("submit", async (event) => {
   event.preventDefault();
   const button = byId("btnCandEnviar"); const status = byId("candStatus"); const file = byId("candArquivo").files[0];
+  const guard = AntiSpam.check(event.target, "candidato");
+  if (guard === "limit") { setFormState(button, status, false, AntiSpam.limitMessage, true); return; }
+  if (guard === "bot") { event.target.reset(); setFormState(button, status, false, "Recebido com sucesso."); return; }
   if (!file || (file.type && file.type !== "application/pdf") || !file.name.toLowerCase().endsWith(".pdf")) {
     setFormState(button, status, false, "Selecione um arquivo PDF válido.", true); return;
   }
@@ -504,6 +515,7 @@ byId("formCandidato").addEventListener("submit", async (event) => {
       }
     });
     const candidateName = byId("candNome").value;
+    AntiSpam.record("candidato");
     event.target.reset(); setFormState(button, status, false, "");
     showCandidateSuccess(candidateName);
   } catch (error) {
@@ -514,6 +526,9 @@ byId("formCandidato").addEventListener("submit", async (event) => {
 byId("formEmpresa").addEventListener("submit", async (event) => {
   event.preventDefault();
   const button = byId("btnEmpEnviar"); const status = byId("empStatus");
+  const guard = AntiSpam.check(event.target, "empresa");
+  if (guard === "limit") { setFormState(button, status, false, AntiSpam.limitMessage, true); return; }
+  if (guard === "bot") { event.target.reset(); setFormState(button, status, false, "Solicitação recebida. Nossa equipe entrará em contato."); return; }
   setFormState(button, status, true, "Registrando sua solicitação...");
   try {
     const coreLead = { nome_contato: byId("empContato").value.trim(), empresa: byId("empNome").value.trim(), email_corporativo: byId("empEmail").value.trim().toLowerCase(), telefone_empresa: byId("empTelefone").value.trim(), servico_interesse: byId("empServico").value, mensagem: byId("empMensagem").value.trim() };
@@ -521,6 +536,7 @@ byId("formEmpresa").addEventListener("submit", async (event) => {
     let { error } = await supabaseClient.from("leads_empresas").insert([qualifiedLead]);
     if (error && /column|schema cache/i.test(error.message || "")) ({ error } = await supabaseClient.from("leads_empresas").insert([coreLead]));
     if (error) throw error;
+    AntiSpam.record("empresa");
     trackEvent("contato_empresa", { origem: "fale_com_especialista" });
     event.target.reset(); setFormState(button, status, false, "Solicitação recebida. Nossa equipe entrará em contato.");
     window.setTimeout(closeModal, 1800);

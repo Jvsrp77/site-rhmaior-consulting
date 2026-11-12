@@ -85,3 +85,15 @@
 .action-link.row-delete:hover{background:#b3392f;border-color:#b3392f;color:#fff}
 .job-delete{border:1px solid #e6c4c0;background:#fff;color:#b3392f;padding:7px 11px;font:inherit;font-size:10px;font-weight:800;cursor:pointer}
 .job-delete:hover{background:#b3392f;border-color:#b3392f;color:#fff}
+.novos-banner{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;background:#fff;border:1px solid var(--line);border-left:4px solid var(--orange);border-radius:10px;padding:14px 18px;margin:0 0 18px;box-shadow:0 8px 30px rgba(2,10,20,.06)}
+.novos-banner>div:first-child{display:grid;gap:2px}
+.novos-banner strong{font-size:14px}
+.novos-banner span{font-size:13px;color:#4f5b69}
+.novos-actions{display:flex;gap:8px;flex-wrap:wrap}
+.novos-action{border:1px solid var(--ink);background:var(--ink);color:#fff;border-radius:8px;padding:8px 13px;font-size:12px;font-weight:700;cursor:pointer}
+.novos-action:hover{opacity:.88}
+.novos-action.novos-dismiss{background:#fff;color:var(--ink);border-color:var(--line)}
+.novos-action.novos-dismiss:hover{border-color:var(--ink)}
+.new-badge{display:inline-block;margin-left:8px;padding:2px 7px;border-radius:20px;background:#e3f4ed;color:#1f6b53;font-size:10px;font-weight:800;letter-spacing:.4px;text-transform:uppercase;vertical-align:middle}
+.nav-item .new-pill{font-style:normal;font-size:9px;font-weight:800;background:#298065;color:#fff;padding:3px 6px;border-radius:20px;margin-right:4px}
+@media(max-width:1100px){.nav-item .new-pill{display:none}}

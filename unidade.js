@@ -11,7 +11,9 @@ function make(tag, className, text) { const el = document.createElement(tag); if
 
 function showEmpty(title, text) {
   const empty = make("div", "jobs-empty");
-  empty.append(make("strong", "", title), make("span", "", text));
+  const cta = make("a", "button button-dark", "Cadastrar currículo →");
+  cta.href = "index.html?cadastro=1";
+  empty.append(make("strong", "", title), make("span", "", text), cta);
   root.replaceChildren(empty);
 }
 
